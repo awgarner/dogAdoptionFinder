@@ -1,16 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Adoption Finder</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- Tailwind links/CDN go here... -->
+    <link href="./dist/output.css" rel="stylesheet">
 </head>
 <body>
+<!-- navigation -->
+<header>
+    <h1> 
+       <a href="/">Dog Adoption Finder</a>
+    </h1>
+    <nav>
+<!-- Unordered list element -->
+<ul>
+    <!-- List item element-->
+    <li>
+        <!-- Anchor element -->
+        <a href="#twitter">Twitter</a>
+    </li>
+    <li>
+        <a href="facebook">Facebook</a>
+    </li>
+    <li>
+        <a href="#instagram">Instagram</a>
+    </li>
     
-
+</ul>
+</nav>
+</header>  
+<section class="content-info ">
+    <div class="container mx-auto px-4 text-3xl font-bold underline ">
+        <h2>Find Your New Companion Today</h2>
+        <p>
+          Our system helps you narrow your search to find exactly what you are looking for.
+        </p>
+     
+<!-- Add form element -->
+    <form>
+        
+        
+        <div class= "flex-1 "> 
+            <label for="age">Age:</label>
+            <input type="age" placeholder="age" name="age" id="age" class="form-input">
+      
+        </div>
+           
+        
+            <div class= "flex-1"> 
+                <label for="size">size:</label>
+                <input type="size" placeholder="size" name="size" id="size" class="form-input">
+            </div>
+           
+        <div class= "flex-1">  
+            <label for="breed">Breed:</label>
+            <input type="breed" placeholder="breed" name="breed" id="breed" class="form-input">
+        </div>
+           
+        
+        <div class= "flex-1">
+            <label for="gender">gender:</label>
+            <input type="gender" placeholder="gender" name="gender" id="gender" class="form-input"></span>
+    
+        </div>
+           
+        
+        <p>
+            <span class="checkbox-wrapper">
+              <input type="checkbox" name="age-confirm" id="checkbox" />
+              <label for="checkbox">I acknowledge that I am at least 18 years of age.</label>
+            </span>
+          </p>
+          
+          
+    <button type="submit">
+        Adopt Today
+    </button>
+    </form>
+    </div>
+</div>
+</section>
+  
 
     <script src="./assets/js/script.js"></script>
 </body>
