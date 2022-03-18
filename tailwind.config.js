@@ -8,4 +8,4 @@ module.exports = {
   },
   plugins: [],
 }
-GET https://api.petfinder.com/v2/types/{type}/breeds
+

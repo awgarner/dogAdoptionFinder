@@ -1,6 +1,6 @@
 function getApi() {
 
-    var requestUrl = "https://api.petfinder.com/v2/types/{type}/breeds";
+    var requestUrl = "https://api.petfinder.com/v2/types/dog/breeds";
   
     fetch(requestUrl, { 
       method: "GET", 
