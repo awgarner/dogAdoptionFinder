@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Adoption Finder</title>
     <link href="./dist/output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
-<body class="bg-blue-300">
+<body>
 <!-- navigation -->
 <header>
     <h1> 
@@ -33,78 +34,89 @@
 </nav>
 </header> 
 
-<section class="content-info">
-    <div class="container mx-auto px-4 ">
+<section class="content-info box-border h-100 w-150 p-50 border-50 ">
+    <div class="container mx-auto">
         <h2>Find Your New Companion Today</h2>
         <p>
           Our system helps you narrow your search to find exactly what you are looking for.
         </p>
      
 <!-- Add form element -->
-    <form>
-        <div class= "flex "> 
-            <label class="block">
+    <form class= "row-4 break-after-row">
+        <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle break-after-row"> 
+            <label class="block flex items-center px-6 py-4">
                 <span class="text-gray-700"></span>
                 <select class="block w-full mt-1">
                   <option>Please Select Dog's Age </option>
-                  <option>0-1yr</option>
-                  <option>2-5yr</option>
-                  <option>6-9</option>
+                  <option>Baby</option>
+                  <option>Young</option>
+                  <option>Adult</option>
+                  <option>Senior</option>
                 </select>
               </label> 
+              
         </div>
            
        
-            <div class= "flex-1"> 
-                <label class="block">
+            <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle "> 
+                <label class="block flex items-center px-6 py-4">
                     <span class="text-gray-700"></span>
                     <select class="block w-full mt-1">
                       <option>Please Select Dog's Size </option>
-                      <option>small</option>
-                      <option>medium</option>
+                      <option>Small</option>
+                      <option>Medium</option>
                       <option>Large</option>
+                      <option>XLarge</option>
                     </select>
                   </label> 
             </div>
            
-        <div class= "flex-1"> 
-            <label class="block">
+        <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle"> 
+            <label class="block flex items-center px-6 py-4">
                 <span class="text-gray-700"></span>
                 <select class="block w-full mt-1">
                   <option>Please Select Dog's Breed</option>
-                  <option></option>
-                  <option></option>
-                  <option></option>
-                  <option></option>
-                  <option></option>
+                  <option>American Bull Dog</option>
+                  <option>Begal</option>
+                  <option>Border Collie</option>
+                  <option>Boxer</option>
+                  <option>Chihuahua</option>
+                  <option>Dalmatian</option>
+                  <option>German Shepherd Dog</option>
+                  <option>Golden Retriver</option>
+                  <option>Husky</option>
+                  <option>Maltese</option>
+                  <option>Morkie</option>
+                  <option>Poodle</option>
+                  <option>Pit Bull Terrier</option>
                 </select>
-                </label>
+            </label>
         </div>
            
        
-        <div class= "flex-1">
-            <label class="block">
+        <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle">
+            <label class="block flex items-center px-6 py-4">
                 <span class="text-gray-700"></span>
                 <select class="block w-full mt-1">
                   <option>Please Select Dog's Gender</option>
-                  <option>male</option>
-                  <option>female</option>
+                  <option>Male</option>
+                  <option>Female</option>
                 </select>
               </label>  
         </div>
            
        
         <p>
-            <span class="checkbox-wrapper">
+            <span class="checkbox-wrapper max-w-full rounded overflow-hidden shadow-lg align-middle">
               <input type="checkbox" name="age-confirm" id="checkbox" />
               <label for="checkbox">I acknowledge that I am at least 18 years of age.</label>
             </span>
           </p>
          
          
-    <button type="submit">
-        Adopt Today
-    </button>
+          <div>
+            <button type="submit" class="py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Adopt Today</button>
+          </div>
     </form>
     </div>
 </div>
