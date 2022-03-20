@@ -1,19 +1,50 @@
-function getAdoptionInfo() {
+let dogsContainerEl = document.querySelector("#dog-list-container");
 
-  var requestUrl = "https://api.petfinder.com/v2/animals?type=dog&status=adoptable&limit=50";
+// temp search parameters to ensure this code works
+let dogAge = "young,adult";
+let dogSize = "large";
+let dogBreed = "poodle";
+let dogGender = "male,female";
+let dogLocation = "columbus, oh";
 
+// get list of adoptable dogs that meet user criteria submitted in form on landing page
+function getAdoptionList() {
+
+  var requestUrl = "https://api.petfinder.com/v2/animals?type=dog&status=adoptable&limit=50&age=" + dogAge + "&size=" + dogSize + "&breed=" + dogBreed + "&gender=" + dogGender + "&location=" + dogLocation;
+
+  // make request to url
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
-      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjMyZmY3NDE1YTJhY2I1OWRlNTc3NTM0MTBhOWNhYTI5MjM5MzNhZDMzMDRlZDc4MjE0NTYyYWRjNmZjYTBhY2RmMzAxMTU2MGYyMjNiOTQxIiwiaWF0IjoxNjQ3NDcxMjM4LCJuYmYiOjE2NDc0NzEyMzgsImV4cCI6MTY0NzQ3NDgzOCwic3ViIjoiIiwic2NvcGVzIjpbXX0.GCwp6AzGxHtMaH7mKC4uqDiv0gSWDGXcItXf-qxRn3df6zGhSjqS3Rs3zzTsw5oEaAU6hca1lTmOVqiweFFsEzKJOXH8y3bPFlCfaEZdeJ6kAAgIyleFSvanAghAQMJYhTty9ZEKWk1lMyPV6PavGSwZcBA5jC2h5L0ivhE3TS4Kaft3IBJLQaMILg8qxA1cRyuWfoW3aD_0hrujOUYnJMm9XMCGk978bEXMIt_Piqa90ojR1QB9OpgLfRiMvpTn8HK5Dsn7Yr2Z6uxxwsnBcFEWjrrvCGVlcXxQaBhvR4JJOCkzW5NXuSiWQJWf75AZE0imgqKNBNklzc-7lQjh6A", 
+      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6ImYzNTNlOTU5MzYwNGViMTA4MGY2YTY4MDg2NTA2NDAyYTc0NzY2ODUzMDk5NWNkMDIwNDc0YWU1YTgxZTU2NjJlNTI3ZDEwNmM4NThjYjQzIiwiaWF0IjoxNjQ3NzQyOTY5LCJuYmYiOjE2NDc3NDI5NjksImV4cCI6MTY0Nzc0NjU2OSwic3ViIjoiIiwic2NvcGVzIjpbXX0.kYHoCRejVwZVpc3q4FNI_sgip61EI7BLcV5jfAdjafnRpd0SoEcTl3WxCEENbxevAQOQCMfEoBuOo07dcKvYRmzABQdctCUz-GHr-Eov1Msu0OO7Prssh9oIpIH8EWmslZGcpKhdMM_oOXKWReabrMX3KG4_wQR8tGyMi0UHZlHQauUo18ffY8f4VKwIWz8iE3OjShSKinr70QNMRSWGvuqNAOiJOni75UDXhQKo1JnA_r8lf-rxB_DqvE0OGqWTWqe2s6HIbJLmqxy4OM_a4-E1WxXAIGE6Yl_YvgWCG_nUBDbGpIU-l1_21jyvdct9cF5PmApg-LQX84nhMM8wMQ", 
     })
   })
     .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      console.log(data);
-    });
+      // request was successful
+      if (response.ok) {
+        response.json().then(function(data) {
+          // send response data to function to display list of dogs
+          console.log(data);
+          displayDogs(data);
+        })
+      }
+      else {
+        // if not successful, redirect to landing page
+        document.location.replace("./index.html");
+      }
+    }); 
 }
 
-getAdoptionInfo();
+let displayDogs = function(dogs) {
+  if (dogs.animals.length === 0) {
+    dogsContainerEl.textContent = "There are no available dogs near you that match your criteria. Please try again.";
+    return;
+  }
+  // loop over adoptable dogs
+  for (let i = 0; i < dogs.animals.length; i++) {
+    console.log(dogs.animals[i].name);
+  }
+}
+
+
+getAdoptionList();
