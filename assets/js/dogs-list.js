@@ -10,13 +10,13 @@ let dogLocation = "columbus, oh";
 // get list of adoptable dogs that meet user criteria submitted in form on landing page
 function getAdoptionList() {
 
-  var requestUrl = "https://api.petfinder.com/v2/animals?type=dog&status=adoptable&limit=50&age=" + dogAge + "&size=" + dogSize + "&breed=" + dogBreed + "&gender=" + dogGender + "&location=" + dogLocation;
+  var requestUrl = "https://api.petfinder.com/v2/animals?type=dog&status=adoptable&limit=25&age=" + dogAge + "&size=" + dogSize + "&breed=" + dogBreed + "&gender=" + dogGender + "&location=" + dogLocation;
 
   // make request to url
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
-      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjBiZTJlNzBkOGY0MmIwM2EyZWRmZTNkYThkZGNlZDgzNTQ3NWRiNjgwNWU2NWZjYmU3NzE2YjM1M2VmNDdjZGY3YWUzNmVlMWU1NGUwMTY4IiwiaWF0IjoxNjQ3NzUwNjI5LCJuYmYiOjE2NDc3NTA2MjksImV4cCI6MTY0Nzc1NDIyOSwic3ViIjoiIiwic2NvcGVzIjpbXX0.se0gSpYXQAF-zdN4ME1-m3CnYRWnvATfidlcYxk7eDo6QPtXJ6761JKqJF-MnQ3dt2gLIeKycbDEUS_Uyv0Q5JSapzzI00zzbT4pBhYA4W7OfcOqZ4KRpE4vSyvjexF7LgUgbw1b7E8hy-phBH58ryMLDdKi8KWBVsJIW_K2htWhx8-J6QgGkAThtD_hAh3wL0W824NVIvsdUkfAX8de9n1rwkSxh_GRLClavADX48jPucq4t5Yu-qLytf4UParB-V0teqk8bUmMHWF2MNwrjART6M95qsGnc2LiCeKUeXQnaTgCPUpPkGjzw8rRwxIGBE7wGxTqmT1mivGwS54GdA", 
+      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjMxZjdiZjQzN2I3NmRhNzk0OTc3NGFmMmFkMTQ3YmRkOTFhYzQzZGVlYTU5YWZiODcxOTEwZDQ4MTgzZTkyNjAwNjNhOGJlZTAwNGQ4Njc3IiwiaWF0IjoxNjQ3Nzk2OTk1LCJuYmYiOjE2NDc3OTY5OTUsImV4cCI6MTY0NzgwMDU5NSwic3ViIjoiIiwic2NvcGVzIjpbXX0.urLCBLSgro8_urQf1BD16cxJP-_Yj3Hqrq3bnJZKWOGX4CouAeKhrz6CYUd7S5DbVcrekyLaFNWMkl5atnOMPUKxSl8_8oFw1R0lWWGoFynyOhrojCYF7OTU7zmHc4j7tNy6xwZpDRpDXfNB7IA1sIlXgsEz3MIXNmjmBmYlVQR5Fc_YwSEqweFkmRbbr5jccaQPegtjhK4HoKuyBGZXAMkC_wHYCQUWNbAe4svTMhUoJisJivWpL1z8wYzjP4HZE3dU1IhvZ1PywwijhDpIsdZHPSlpjbzN2G9Hydnymfh1m_ZQ8Z3N6aqEsCPqUwGqakLtMHlKlul_K9yvn5OdPQ", 
     })
   })
     .then(function(response) {
@@ -52,13 +52,39 @@ let displayDogs = function(dogs) {
     // define image url
     let dogImageUrl = dogs.animals[i].primary_photo_cropped.full;
     let urlEnding = dogImageUrl.split("=")[1];
-    console.log(dogImageUrl, urlEnding);
+   
     // create div for image of dog to display
     let dogImageEl = document.createElement("div");
     dogImageEl.classList = "flex items-center px-6 py-4";
-    dogImageEl.innerHTML = "<img src='https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/" + dogId + "/1/?bust=" + urlEnding + "' alt='dogs.animals[i].name' />";
+    dogImageEl.innerHTML = "<img src='https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/" + dogId + "/1/?bust=" + urlEnding + "&width=300' alt='dogs.animals[i].name' />";
 
+    // append to link element container
     dogEl.appendChild(dogImageEl);
+
+    // create a container for the dog information
+    let dogInfoContainer = document.createElement("div");
+    dogInfoContainer.classList = "px-6 py-4";
+
+    // create a title element that displays dog's name
+    let dogName = dogs.animals[i].name;
+    let dogTitleEl = document.createElement("h2");
+    dogTitleEl.classList = "font-bold text-xl mb-2";
+    dogTitleEl.textContent = "Meet " + dogName;
+
+    // create a div element that displays dog's basic information
+    let primaryDogBreed = dogs.animals[i].breeds.primary;
+    let ageOfDog = dogs.animals[i].age;
+    let sexOfDog = dogs.animals[i].gender;
+    let dogInfoEl = document.createElement("div");
+    dogInfoEl.classList = "flex flex-wrap";
+    dogInfoEl.innerHTML = "<p class='mr-2'>Breed: " + primaryDogBreed + "</p><br /><p class='mr-2'>Age: " + ageOfDog + "</p><br /><p class='mr-2'>Gender: " + sexOfDog + "</p>";
+
+    // append title and paragraph to dog info container
+    dogInfoContainer.appendChild(dogTitleEl);
+    dogInfoContainer.appendChild(dogInfoEl);
+
+    // append dog info container to link element container
+    dogEl.appendChild(dogInfoContainer);
 
     dogsContainerEl.appendChild(dogEl);
   }
