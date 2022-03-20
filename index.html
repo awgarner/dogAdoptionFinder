@@ -12,41 +12,46 @@
 </head>
 <body>
 <!-- navigation -->
-<header>
-    <h1> 
-       <a href="/">Dog Adoption Finder</a>
-    </h1>
-<nav>
-<ul>
-    <!-- List item element-->
-    <li>
-        <!-- Anchor element -->
-        <a href="#twitter">Twitter</a>
-    </li>
-    <li>
-        <a href="facebook">Facebook</a>
-    </li>
-    <li>
-        <a href="#instagram">Instagram</a>
-    </li>
-   
-</ul>
-</nav>
-</header> 
+<nav class="bg-indigo-700 shadow-lg">
+  <div class="container mx-auto">
+    <div class="sm:flex justify-around">
+     
+      <a href="#" class="text-white text-3xl font-bold p-3">Dog Adoption Finder</a>
 
-<section class="content-info box-border h-100 w-150 p-50 border-50 ">
-    <div class="container mx-auto">
+      <!-- Menus  -->
+      <ul class="text-gray-400 sm:self-center text-xl border-t sm:border-none">
+        <li class="sm:inline-block">
+          <a href="#" class="p-3 hover:text-white">Twitter</a>
+        </li>
+        <li class="sm:inline-block">
+          <a href="#" class="p-3 hover:text-white">Instagram</a>
+        </li>
+        <li class="sm:inline-block">
+          <a href="#" class="p-3 hover:text-white">Facebook</a>
+        </li>
+        <li class="sm:inline-block">
+          <a href="#" class="p-3 hover:text-white">Contact Us</a>
+        </li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="container mx-auto mt-6 text-center text-3xl font-regular text-blue-700">
         <h2>Find Your New Companion Today</h2>
-        <p>
+        <p class= "mt-2 text-center text-sm text-gray-600 max-w break-before-form space-y-4">
           Our system helps you narrow your search to find exactly what you are looking for.
         </p>
-     
+    </div>
+
 <!-- Add form element -->
-    <form class= "row-4 break-after-row">
-        <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle break-after-row"> 
+    <form class= "row-4 bg-white flex flex-col justify-center py-12 px-6 lg:px-8">
+        <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle mx-auto mt-6 text-center "> 
             <label class="block flex items-center px-6 py-4">
                 <span class="text-gray-700"></span>
-                <select class="block w-full mt-1">
+                <select class="block w-full mt-1 ">
                   <option>Please Select Dog's Age </option>
                   <option>Baby</option>
                   <option>Young</option>
@@ -58,7 +63,7 @@
         </div>
            
        
-            <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle "> 
+            <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle mx-auto mt-6 text-center "> 
                 <label class="block flex items-center px-6 py-4">
                     <span class="text-gray-700"></span>
                     <select class="block w-full mt-1">
@@ -71,7 +76,7 @@
                   </label> 
             </div>
            
-        <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle"> 
+        <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle mx-auto mt-6 text-center"> 
             <label class="block flex items-center px-6 py-4">
                 <span class="text-gray-700"></span>
                 <select class="block w-full mt-1">
@@ -94,7 +99,7 @@
         </div>
            
        
-        <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle">
+        <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle mx-auto mt-6 text-center">
             <label class="block flex items-center px-6 py-4">
                 <span class="text-gray-700"></span>
                 <select class="block w-full mt-1">
@@ -106,7 +111,7 @@
         </div>
            
        
-        <p>
+        <p class="mx-auto mt-6 text-center">
             <span class="checkbox-wrapper max-w-full rounded overflow-hidden shadow-lg align-middle">
               <input type="checkbox" name="age-confirm" id="checkbox" />
               <label for="checkbox">I acknowledge that I am at least 18 years of age.</label>
@@ -114,13 +119,12 @@
           </p>
          
          
-          <div>
-            <button type="submit" class="py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Adopt Today</button>
+          <div class= "mx-auto mt-6 text-center">
+            <button type="submit" class=" py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Adopt Today</button>
           </div>
     </form>
-    </div>
 </div>
-</section>
+
  
 
     <script src="./assets/js/script.js"></script>
