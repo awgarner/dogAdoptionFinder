@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#image-container {
+  height: 150px;
+}
+
+#image {
+  height: 100%;
+  object-fit: contain;
+}
