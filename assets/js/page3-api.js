@@ -1,4 +1,4 @@
-var dogId = 55061211
+//var dogId = 55061211
 
 function getDogId() {
   //var string = document.location;
@@ -13,7 +13,7 @@ function getAdoptionInfo(dogId) {
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
-      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjkyOGE5M2M1OWRlNzhiNWY0MTY3YjhiMDYwMGQ3MzE2NzhmODM1ZDViMTBhYzNhNjZhMGE5NDdiNzU2MjBlYTg5NGYwODM2ZjIyOGU3NGZmIiwiaWF0IjoxNjQ3OTA4NjI3LCJuYmYiOjE2NDc5MDg2MjcsImV4cCI6MTY0NzkxMjIyNywic3ViIjoiIiwic2NvcGVzIjpbXX0.W7Otx6ZPOUVfoeygLuQIeUkg6tQZYxj0sgDPrUfIpL8Dg9dvd6ygOcm7Xliqp3sREO2qcDSe0te_bKICFDEd7BjmcKWK3VzP0IzV-PkJUmV-d-apTIPRErw1bSuLL4vzR3SI0eD__lHxw7hJdnrvssEHUUl2oV2ZCVsdkteCtCInYy8xCVy-94d9vtNwHuQqKY5TlXvMyJ8iWdvhjv-ARZIRVZf4HEJUSHVHTEQKKndwIaiisgnpYSjqm7gn8pcNdX2xj6WwMQ-EB4oUvB2x69KnrhQlIRMR8nUklK_xjtv7bv_EMgUJbi-BA1Km1qq1nD3bbmgmXCIu64spbP-dLQ", 
+      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjI1NmZlZGVmMzEyMjAwZjFkMGYwMTllNjg3Mzg1MDJhN2FjMmI4NzNjNWVlMjNmYzQ3OWQ3YWQ1YzcwOGQ4Y2EyMWM5ZGQ5MzllY2MxYmM0IiwiaWF0IjoxNjQ3OTkyNTIxLCJuYmYiOjE2NDc5OTI1MjEsImV4cCI6MTY0Nzk5NjEyMSwic3ViIjoiIiwic2NvcGVzIjpbXX0.yLMrUDmKQOwaqoYR--sXWgPzLvKYKeg5swCO93EbgG7tKzgzVJ4lGy8W2FaLcN3CI55wgGXxOP10xVFnTAZQUxXAi_QnKKWKEEtBzzHubUfF5egFkApvkjcPCgsCMeH-NNGxDByYFf6RPkExB8LyoGg0r9KDhp8_i_Xf-woEFoZ7juQv_GmS5JKUqbSpN6D0_5qqo8MlNox3OMbTcMGWXhJSb65BhBERSHi1N-8RtT9PIQxk1WadVUuu0jA-dpkMEH97IQc5P0oWMUvzAdzHDw9g5okOMC69H-VU6A57T5iwl6Fe3dTrK2ZP0HcNusF9BbPUjtyfeV5kyGySpx9v4Q", 
     })
   })
     .then(function(response) {
@@ -24,7 +24,7 @@ function getAdoptionInfo(dogId) {
     });
 }
 
-//getAdoptionInfo();
+getAdoptionInfo();
 
 
 function getBreedInfo() {
@@ -45,5 +45,5 @@ function getBreedInfo() {
       });
   }
   
-  getBreedInfo();
+  //getBreedInfo();
   //getDogId();
