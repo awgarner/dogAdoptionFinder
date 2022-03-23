@@ -1,25 +1,25 @@
+let submitBtn = document.getElementById("submitBtn");
+
+document.getElementById("submitBtn").addEventListener("click", generateForm);
+
+function generateForm() {
+  document.getElementById("submitBtn").innerHTML = "";
+
+  console.log(submitBtn,"hi")
+}
+
+
 function getApi() {
 
-<<<<<<< HEAD
   var requestUrl = "https://api.petfinder.com/v2/types/dog/breeds";
 
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
-      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjNkNDhjYzczYWYzMjJjNTFiZDk1ZDU2NjQ3MmM3ZGJiODgzYmE3OTQwZDJmNzgzMDI4NDRmNzcxMDcyZmIzMDI2YTFmZTA1MGUyMTRkMWVlIiwiaWF0IjoxNjQ3NjI0NTA4LCJuYmYiOjE2NDc2MjQ1MDgsImV4cCI6MTY0NzYyODEwOCwic3ViIjoiIiwic2NvcGVzIjpbXX0.ZXDKtlqA_2sCw_2u3t3QVNJ7_0kNNj7sa8ugQVbs0UC8TIQqAFSxm3UYcP7hY56aEexZBHJ20gmfsDbsWTsR2KlbY-bt2fzQuyii-vu4s-iN-htUcjs-RvlCfNNA1PHvIDYIVBWEZY09PvnxhjoQTLXuvMV1smQBfzdkx9y0_sYIzY_DT4K1rNw0F1NxiYIAdJW4DZCntyAuzYtPggqDgSNrVfgi_BPBFlLAvlfp2DZUFNxsPJzviKgqUMz0-yWfDEtFdh5-brr8zglwqef6sfWph9uX-iTNCsDLstTpKjkcsZY250988mQTi3MjEYBJgGzMjd_eS0Pqc5V_Hjxnkg", 
-    })
+      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjA4ZjFjOTJjYWMwMWVmNzZkZDViNDNkODNhOTYzODVhM2E5OWU0NDdlOWI1OWZlMTM4NTIyZmQxZDc5OTgwMGU4ZmFiZGQ3ZWMzNWNjMjI1IiwiaWF0IjoxNjQ3OTkxNTcwLCJuYmYiOjE2NDc5OTE1NzAsImV4cCI6MTY0Nzk5NTE3MCwic3ViIjoiIiwic2NvcGVzIjpbXX0.u_jfpFaklBrVKfkNy9bBDKZPGQUIhyW9xmJdY5gVLeqwgu6nNcIxyzjahEmn9VZ2Fl6K5bPZ_6TTSU93qCT__2efjLgynXqzZvmnme_QvPcPauUpOwu1yxdYadCC115iLHzE0X_X8EoNhO0NLVQVYZ2MD-7QMT-FHUxkVmHcA0TEGfAnY5llLLAJrI1C4Y_wupH0cBFMleD9g_Gig1Wxn3d5jqsVtNFWbhMmxh_TrEIu1Qbso5YswnHyewRJw2TzgDSZ_7OEcIrLErC59XvPVfRGjgE3afKvBNDrMGGRObVXpikbMmggB0ZK1MvAANzbRV8ksUqkm7JYYOPhKHNUiA" })
   })
     .then(function(response) {
       return response.json();
-=======
-    var requestUrl = "https://api.petfinder.com/v2/types/dog/breeds";
-  
-    fetch(requestUrl, { 
-      method: "GET", 
-      headers: new Headers({
-        "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjNkNDhjYzczYWYzMjJjNTFiZDk1ZDU2NjQ3MmM3ZGJiODgzYmE3OTQwZDJmNzgzMDI4NDRmNzcxMDcyZmIzMDI2YTFmZTA1MGUyMTRkMWVlIiwiaWF0IjoxNjQ3NjI0NTA4LCJuYmYiOjE2NDc2MjQ1MDgsImV4cCI6MTY0NzYyODEwOCwic3ViIjoiIiwic2NvcGVzIjpbXX0.ZXDKtlqA_2sCw_2u3t3QVNJ7_0kNNj7sa8ugQVbs0UC8TIQqAFSxm3UYcP7hY56aEexZBHJ20gmfsDbsWTsR2KlbY-bt2fzQuyii-vu4s-iN-htUcjs-RvlCfNNA1PHvIDYIVBWEZY09PvnxhjoQTLXuvMV1smQBfzdkx9y0_sYIzY_DT4K1rNw0F1NxiYIAdJW4DZCntyAuzYtPggqDgSNrVfgi_BPBFlLAvlfp2DZUFNxsPJzviKgqUMz0-yWfDEtFdh5-brr8zglwqef6sfWph9uX-iTNCsDLstTpKjkcsZY250988mQTi3MjEYBJgGzMjd_eS0Pqc5V_Hjxnkg", 
-      })
->>>>>>> 5950f6466727b5130de0937bd2767cb152983759
     })
     .then(function(data) {
       console.log(data);
@@ -27,3 +27,8 @@ function getApi() {
 }
 
 getApi();
+
+
+
+
+
