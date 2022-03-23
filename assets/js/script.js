@@ -1,15 +1,16 @@
 let submitBtn = document.getElementById("submitBtn");
 
-document.getElementById("submitBtn").addEventListener("click", generateForm);
+submitBtn.addEventListener("click", captureInputs);
 
-function generateForm() {
+function captureInputs(event) {
+  event.preventDefault();
   let dogAge = document.querySelector("#dogAge").value;
   let dogSize = document.querySelector("#dogSize").value;
   let dogBreed = document.querySelector("#dogBreed").value;
   let dogGender = document.querySelector("#dogGender").value;
   let dogLocation = document.querySelector("#dogLocation").value;
 
-  console.log(dogAge,dogSize,dogBreed,dogGender,dogLocation)
+  getAdoptionList(dogAge, dogSize, dogBreed, dogGender, dogLocation);
 }
 
 

@@ -1,48 +1,50 @@
 let dogsContainerEl = document.querySelector("#dog-list-container");
 let limitWarningEl = document.querySelector("#limit-warning");
 
-// temp search parameters to ensure this code works
-let dogAge = "young,adult";
-let dogSize = "large";
-let dogBreed = "shepherd";
-let dogGender = "male,female";
-let dogLocation = "43202";
+// // temp search parameters to ensure this code works
+// let dogAge = "young,adult";
+// let dogSize = "large";
+// let dogBreed = "shepherd";
+// let dogGender = "male,female";
+// let dogLocation = "43202";
 
 // get list of adoptable dogs that meet user criteria submitted in form on landing page
-function getAdoptionList() {
+function getAdoptionList(dogAge, dogSize, dogBreed, dogGender, dogLocation) {
+  //window.location.href = "./adoptable-dogs.html";
+  console.log(dogAge, dogSize, dogBreed, dogGender, dogLocation);
+  // var requestUrl = "https://api.petfinder.com/v2/animals?type=dog&status=adoptable&limit=30&age=" + dogAge + "&size=" + dogSize + "&breed=" + dogBreed + "&gender=" + dogGender + "&location=" + dogLocation;
 
-  var requestUrl = "https://api.petfinder.com/v2/animals?type=dog&status=adoptable&limit=30&age=" + dogAge + "&size=" + dogSize + "&breed=" + dogBreed + "&gender=" + dogGender + "&location=" + dogLocation;
+  // // make request to url
+  // fetch(requestUrl, { 
+  //   method: "GET", 
+  //   headers: new Headers({
+  //     "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6ImNlM2YwZjhjZGE2NDFlNjJkZDQ3MTBiYWMwMTMyZmEwODU5NjgwZGNhNTlhZWYxZWM5OTM3NzY3MGY0OWU3NDQwNTc0N2NiZWYwZjI2M2UzIiwiaWF0IjoxNjQ4MDUyMTEyLCJuYmYiOjE2NDgwNTIxMTIsImV4cCI6MTY0ODA1NTcxMiwic3ViIjoiIiwic2NvcGVzIjpbXX0.Q9OWcfHn5XvghKm7qVBEn0TIFWlTWkTDcULuaKD4pmnD8kLVwdoj6Q67ggEVzanQAfSIlJZvtLJ16Z9ScPiDDIrj37K6tLc4yyhvanHwihRDjcVTuwoNVoESAFYJKoH9Z_qyMDmDp4JNd2jvMM5gsJotX7-Txm-gCqeIwW1_nKKgMz8jtO2B7gQwZL9Lddfu9VNZktNC59uMcgF38qCxe4heXy1Zcr9IICgZqUHkf8XQj0M_jhu_iDJTGIXwFmdXeEPnERwsg91-Z_R6Qk5JtFBMPQRs14FMQ5Vmv9nrez7uNAM2LUFvW-8KuKHrPJ9lYCrjval_5MthyizRw1fHJg", 
+  //   })
+  // })
+  //   .then(function(response) {
+  //     // request was successful
+  //     if (response.ok) {
+  //       response.json().then(function(data) {
+  //         // send response data to function to display list of dogs
+  //         console.log(data);
+  //         displayDogs(data);
 
-  // make request to url
-  fetch(requestUrl, { 
-    method: "GET", 
-    headers: new Headers({
-      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6ImEwYTY4NDkwYmNkMzZkMjA0NThkYmQ4NTg5NDMxZWU0N2NhZGI5NGNlYmNkZGVmMDJkMmIzN2U1NThmNTk3OGRjMTEyZjE0MWRlZjM5YjVhIiwiaWF0IjoxNjQ3ODczMTE0LCJuYmYiOjE2NDc4NzMxMTQsImV4cCI6MTY0Nzg3NjcxNCwic3ViIjoiIiwic2NvcGVzIjpbXX0.CBn8RxyJxIY__j_XD2Ze-gkyzDsZnY92vMrj9oJ1FWezFqQVHYu5eczSgqRnupY49O_ZFrK_HvkfxPq8khvc2ZzE_45f1d0VUirJ05iKvNZ4tRqWAkqGHokEHnBjsd8o88G4C5S_PrOjVEvSBRUeRxoq3FDuyOvP3-CxXRevD1WH0pLWhamFKO_POCddvCuafR9wK-1ID44bqJtdRXuAtdEQqGbqACaU1KntroxvQvKAqI-jXckyqF0o5xWG7Dkakx-bCVdoIsELaodYwjRujvGhZNFnVc5ST4T-Ex7IJe4V17mo1G_6UEcoYYf4EEXdqRk4TWtcW2k7HIGE7rypwA", 
-    })
-  })
-    .then(function(response) {
-      // request was successful
-      if (response.ok) {
-        response.json().then(function(data) {
-          // send response data to function to display list of dogs
-          console.log(data);
-          displayDogs(data);
-
-          // check if api has paginated issues
-          if (data.pagination.total_count > 30) {
-          displayWarning();
-          }
-        })
-      }
-      else {
-        // if not successful, redirect to landing page
-        document.location.replace("./index.html");
-      }
-    }); 
+  //         // check if api has paginated issues
+  //         if (data.pagination.total_count > 30) {
+  //         displayWarning();
+  //         }
+  //       })
+  //     }
+  //     else {
+  //       // if not successful, display error message
+  //       console.log("error message");
+  //     }
+  //   }); 
 }
 
 let displayDogs = function(dogs) {
   if (dogs.animals.length === 0) {
+    console.log("no available dogs")
     dogsContainerEl.textContent = "There are no available dogs near you that match your criteria. Please try again.";
     return;
   }
@@ -120,4 +122,4 @@ let displayWarning = function() {
 }
 
 
-getAdoptionList();
+//getAdoptionList();
