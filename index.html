@@ -10,7 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
-<body class="bg-blue-300">
+<body>
 <!-- navigation -->
 <nav class="bg-indigo-700 shadow-lg">
   <div class="container mx-auto">
@@ -52,7 +52,7 @@
         <img class="mx-auto h-40 w-auto" src="./assets/images/dogimg5.jpg" alt="couple hugging a shihtzu" />
         <label class="block flex items-center px-6 py-4">
                 <span class="text-gray-700"></span>
-                <select class="block w-full mt-1 ">
+                <select class="block w-full mt-1" id="dogAge">
                   <option>Please Select Dog's Age </option>
                   <option>Baby</option>
                   <option>Young</option>
@@ -68,12 +68,10 @@
               <img class="mx-auto h-40 w-auto" src="./assets/images/dogimg2.jpg" alt="two long coated brown and black dogs" />  
               <label class="block flex items-center px-6 py-4">
                     <span class="text-gray-700"></span>
-                    <select class="block w-full mt-1">
+                    <select class="block w-full mt-1" id="dogSize">
                       <option>Please Select Dog's Size </option>
-
                       <option>Small</option>
                       <option>Medium</option>
-
                       <option>Large</option>
                       <option>XLarge</option>
                     </select>
@@ -84,7 +82,7 @@
           <img class="mx-auto h-40 w-auto" src="./assets/images/dogimg1.jpg" alt="photo of dogs near fence" />
           <label class="block flex items-center px-6 py-4">
                 <span class="text-gray-700"></span>
-                <select class="block w-full mt-1">
+                <select class="block w-full mt-1" id="dogBreed">
                   <option>Please Select Dog's Breed</option>
                   <option>American Bulldog</option>
                   <option>Beagle</option>
@@ -108,7 +106,7 @@
           <img class="mx-auto h-40 w-auto" src="./assets/images/dogimg6.jpg" alt="woman in white and black stripe top hugging a dog" />
           <label class="block flex items-center px-6 py-4">
                 <span class="text-gray-700"></span>
-                <select class="block w-full mt-1">
+                <select class="block w-full mt-1" id="dogGender" >
                   <option>Please Select Dog's Gender</option>
                   <option>Male</option>
                   <option>Female</option>
@@ -119,7 +117,7 @@
         <div class= "mx-auto mt-6 text-center"> 
           <label for="location" class="block text-lg font-regular text-gray-700">Please Enter Your location</label>
           <div class="mt-1">
-            <input id="location" name="location" type="location" autocomplete="location" required class="" />
+            <input id="dogLocation" name="location" type="location" autocomplete="location" required class="" />
           </div>
        
         <p class="mx-auto mt-6 text-center">
@@ -138,7 +136,7 @@
 </div>
 
  
-
+  <script src= "./assets/js/dogs-list.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

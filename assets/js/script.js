@@ -3,9 +3,13 @@ let submitBtn = document.getElementById("submitBtn");
 document.getElementById("submitBtn").addEventListener("click", generateForm);
 
 function generateForm() {
-  document.getElementById("submitBtn").innerHTML = "";
+  let dogAge = document.querySelector("#dogAge").value;
+  let dogSize = document.querySelector("#dogSize").value;
+  let dogBreed = document.querySelector("#dogBreed").value;
+  let dogGender = document.querySelector("#dogGender").value;
+  let dogLocation = document.querySelector("#dogLocation").value;
 
-  console.log(submitBtn,"hi")
+  console.log(dogAge,dogSize,dogBreed,dogGender,dogLocation)
 }
 
 
@@ -22,11 +26,11 @@ function getApi() {
       return response.json();
     })
     .then(function(data) {
-      console.log(data);
+  
     });
 }
 
-getApi();
+//getApi();
 
 
 
