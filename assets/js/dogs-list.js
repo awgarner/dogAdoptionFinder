@@ -4,7 +4,7 @@ let limitWarningEl = document.querySelector("#limit-warning");
 // temp search parameters to ensure this code works
 let dogAge = "young,adult";
 let dogSize = "large";
-let dogBreed = "";
+let dogBreed = "american bull dog";
 let dogGender = "female";
 let dogLocation = "43202";
 
@@ -17,7 +17,7 @@ function getAdoptionList() {
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
-      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6ImYzMmU5OTU5NzUwM2JjYWM1Y2RhNjMwOTM4NTE1ZWFjYTIzN2FmOTdlMGRhZmZhY2MwMzdkNTlkNWYxY2ZmODI1OWRmNTBlY2U4NWRhNGFiIiwiaWF0IjoxNjQ3OTA0NjQ0LCJuYmYiOjE2NDc5MDQ2NDQsImV4cCI6MTY0NzkwODI0NCwic3ViIjoiIiwic2NvcGVzIjpbXX0.aXN89bH-ycisrb7cM_c0Py9FTRaxZfSdJV89t9SAZGiixsZw-uBcmSjWu4QW1VcDGWbqnPap3vun-zDGc5YQ88YRQUWjI882Hdv4rQEDBWPGphAoguTkx7dzJ0y2CviRAyS__-AJjnbq6Gvs7XFDAriUHgjmTFCgxQYq6k0KE1CTkjHvR9PVcxNCqBZ_q2YvKU1byl8I7HukvOhWuTXBmSPrLxVUKUS6UPv9MfpD_WmHcU4ltttHAy4N6EI07TbVY6kQSfPeIJ_d9lyB7tJUxXGeHzKuqCDW5jGPNs8k2qJ5UcLAsT_4W2sLN-48a_rl41uADoWjD9xya-rXK5yXIA", 
+      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6ImIwOTQzNjIwODJlY2Y0ZDM1NTE5ZDJmNGI4MzIyMTkxM2Y5NzQ1OWY4OTkxOGQ4ZTg5YTQ1ZmFiNzc4MGFjNjVhZmMwNjhmZmQ1ZDkyYmFlIiwiaWF0IjoxNjQ3OTUzOTExLCJuYmYiOjE2NDc5NTM5MTEsImV4cCI6MTY0Nzk1NzUxMSwic3ViIjoiIiwic2NvcGVzIjpbXX0.k6KINm7YGTTRBl_RHJupf40y0PRl9CwpFpvA6r2RYFeDi2gMyCHoNOQS5wapOoTc2JcmJ51V6U630-JM2Z1_P_p2oNr9jIWxHxuYRf_0Sk84jPUZzlV2uh5CpP-0yKNrIFaLPekLqhgjKzWH7rxhVZWB6Xk5wHmsnLYmzNOd_pu1e-RRGK_e9I7KYn5i0XKQr3UaNILjPzgUsTDU3Bh6VqpPJPrsolLv_LFDtqdeBDl0OG5h7_kn4QcgdUqy0AoD59hHxwl4_GmhY-cHhvGNedbpU5fyFEuuVOQvYlHciaDt_NsFph4PcaY898rgx2lj45A4hnAaRaALmyumXfmorA", 
     })
   })
     .then(function(response) {
@@ -56,7 +56,6 @@ let displayDogs = function(dogs) {
     let dogId = dogs.animals[i].id;
     // create a link element container for each dog
     let dogEl = document.createElement("a");
-    //dogEl.id = "dog-container"
     dogEl.classList = "flex max-w-4xl rounded overflow-hidden shadow-lg text-center flex-col sm:flex-row w-1/2";
     dogEl.setAttribute("href", "./page3.html?dog=" + dogId);
 
