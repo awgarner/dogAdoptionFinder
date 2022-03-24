@@ -1,8 +1,9 @@
 //var dogId = 55061211
 
 function getDogId() {
-  //var string = document.location;
-  //var dogId = string.split("=")[1];
+  var string = document.location.search;
+  var dogId = string.split("=")[1];
+  console.log(dogId)
   getAdoptionInfo(dogId)
 }
 
@@ -13,7 +14,7 @@ function getAdoptionInfo(dogId) {
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
-      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjI1NmZlZGVmMzEyMjAwZjFkMGYwMTllNjg3Mzg1MDJhN2FjMmI4NzNjNWVlMjNmYzQ3OWQ3YWQ1YzcwOGQ4Y2EyMWM5ZGQ5MzllY2MxYmM0IiwiaWF0IjoxNjQ3OTkyNTIxLCJuYmYiOjE2NDc5OTI1MjEsImV4cCI6MTY0Nzk5NjEyMSwic3ViIjoiIiwic2NvcGVzIjpbXX0.yLMrUDmKQOwaqoYR--sXWgPzLvKYKeg5swCO93EbgG7tKzgzVJ4lGy8W2FaLcN3CI55wgGXxOP10xVFnTAZQUxXAi_QnKKWKEEtBzzHubUfF5egFkApvkjcPCgsCMeH-NNGxDByYFf6RPkExB8LyoGg0r9KDhp8_i_Xf-woEFoZ7juQv_GmS5JKUqbSpN6D0_5qqo8MlNox3OMbTcMGWXhJSb65BhBERSHi1N-8RtT9PIQxk1WadVUuu0jA-dpkMEH97IQc5P0oWMUvzAdzHDw9g5okOMC69H-VU6A57T5iwl6Fe3dTrK2ZP0HcNusF9BbPUjtyfeV5kyGySpx9v4Q", 
+      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6ImRhMDEzNzg1ZDg2YWJkYmRlZWYyNTY3MGZmNzZiZDg1OGU5YTE1YmYzZGE0YzAxMjYzM2VhNWMwMWZjY2ZmYTcxZGU4YTI2ZWU4YWI0ZTQyIiwiaWF0IjoxNjQ4MDc3OTE2LCJuYmYiOjE2NDgwNzc5MTYsImV4cCI6MTY0ODA4MTUxNiwic3ViIjoiIiwic2NvcGVzIjpbXX0.ZNZbfHDudLEmx3O8281xfrepnESKr1dMC41JkEO8g_V-DMaMor6_bJEJ_Uig5DUsvsJZ-P7EHB-24MzdRdFRPgcnEEjhP4nvibiUykZvgOcoGivH5XAr9d7qNVpgxXKRJRWWa6tNLG2f5bv9TP3P-pllcahkpuWKY6VbNfiBlQcvRyOsosQ1jK2QIf0KZItYAR0vT2e9HINePb_PPsBL-q5mJuHtAdNBr1k_5z-If0cuMQUfWmfN8I5dwinQukFcawO1NMAElLj9cHvNhjNCrV4PlcipCLlOhI4k2ONIwLJmzlKiyLgtpaHruDbFr-pHp5ErYHsTfQd80m_Fm3z9bQ", 
     })
   })
     .then(function(response) {
@@ -24,7 +25,13 @@ function getAdoptionInfo(dogId) {
     });
 }
 
-getAdoptionInfo();
+function displayDogInfo() {
+  var primaryBreed = data.animal.breeds.primary;
+  var secondaryBreed = data.animal.breeds.secondary;
+  var letBreed = document.querySelector("")
+}
+
+//getAdoptionInfo();
 
 
 function getBreedInfo() {
@@ -46,4 +53,4 @@ function getBreedInfo() {
   }
   
   //getBreedInfo();
-  //getDogId();
+  getDogId();
