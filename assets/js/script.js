@@ -17,7 +17,15 @@ localStorage.setItem('dogBreed', JSON.stringify(dogBreed));
 localStorage.setItem('dogGender', JSON.stringify(dogGender)); 
 localStorage.setItem('dogLocation', JSON.stringify(dogLocation)); 
 
-  console.log(dogAge,dogSize,dogBreed,dogGender,dogLocation)
+//retrieve the object
+var retrieveddogAge = JSON.parse(localStorage.getItem('dogAge')); 
+var retrieveddogSize = JSON.parse(localStorage.getItem('dogSize')); 
+var retrieveddogBreed = JSON.parse(localStorage.getItem('dogBreed')); 
+var retrieveddogGender = JSON.parse(localStorage.getItem('dogGender')); 
+var retrieveddogLocation = JSON.parse(localStorage.getItem('dogLocation')); 
+
+
+window.location="./adoptable-dogs.html"
 }
 
 
