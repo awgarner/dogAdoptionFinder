@@ -9,15 +9,20 @@ function captureInputs(event) {
   let dogBreed = document.querySelector("#dogBreed").value;
   let dogGender = document.querySelector("#dogGender").value;
   let dogLocation = document.querySelector("#dogLocation").value;
+  
+//stringify object and store
+localStorage.setItem('dogAge', JSON.stringify(dogAge)); 
+localStorage.setItem('dogSize', JSON.stringify(dogSize));
+localStorage.setItem('dogBreed', JSON.stringify(dogBreed));
+localStorage.setItem('dogGender', JSON.stringify(dogGender)); 
+localStorage.setItem('dogLocation', JSON.stringify(dogLocation)); 
 
-  getAdoptionList(dogAge, dogSize, dogBreed, dogGender, dogLocation);
+  console.log(dogAge,dogSize,dogBreed,dogGender,dogLocation)
 }
 
 
-function getApi() {
 
-  var requestUrl = "https://api.petfinder.com/v2/types/dog/breeds";
-
+let getApi = function() {
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
