@@ -1,23 +1,31 @@
 let dogsContainerEl = document.querySelector("#dog-list-container");
 let limitWarningEl = document.querySelector("#limit-warning");
 
-// temp search parameters to ensure this code works
-let dogAge = "young,adult";
-let dogSize = "large";
-let dogBreed = "shepherd";
-let dogGender = "male,female";
-let dogLocation = "43202";
+// // temp search parameters to ensure this code works
+// let dogAge = "young,adult";
+// let dogSize = "large";
+// let dogBreed = "shepherd";
+// let dogGender = "male,female";
+// let dogLocation = "43202";
+let getParams = function() {
+  let dogAge = JSON.parse(localStorage.getItem("dogAge"));
+  let dogSize = JSON.parse(localStorage.getItem("dogSize"));
+  let dogBreed = JSON.parse(localStorage.getItem("dogBreed"));
+  let dogGender = JSON.parse(localStorage.getItem("dogGender"));
+  let dogLocation = JSON.parse(localStorage.getItem("dogLocation"));
+  getAdoptionList(dogAge, dogSize, dogBreed, dogGender, dogLocation);
+}
 
 // get list of adoptable dogs that meet user criteria submitted in form on landing page
-function getAdoptionList() {
-
-  var requestUrl = "https://api.petfinder.com/v2/animals?type=dog&status=adoptable&limit=30&age=" + dogAge + "&size=" + dogSize + "&breed=" + dogBreed + "&gender=" + dogGender + "&location=" + dogLocation;
+function getAdoptionList(dogAge, dogSize, dogBreed, dogGender, dogLocation) {
+  console.log(dogAge, dogSize, dogBreed, dogGender, dogLocation);
+  let requestUrl = "https://api.petfinder.com/v2/animals?type=dog&status=adoptable&limit=30&age=" + dogAge + "&size=" + dogSize + "&breed=" + dogBreed + "&gender=" + dogGender + "&location=" + dogLocation;
 
   // make request to url
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
-      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6ImEwYTY4NDkwYmNkMzZkMjA0NThkYmQ4NTg5NDMxZWU0N2NhZGI5NGNlYmNkZGVmMDJkMmIzN2U1NThmNTk3OGRjMTEyZjE0MWRlZjM5YjVhIiwiaWF0IjoxNjQ3ODczMTE0LCJuYmYiOjE2NDc4NzMxMTQsImV4cCI6MTY0Nzg3NjcxNCwic3ViIjoiIiwic2NvcGVzIjpbXX0.CBn8RxyJxIY__j_XD2Ze-gkyzDsZnY92vMrj9oJ1FWezFqQVHYu5eczSgqRnupY49O_ZFrK_HvkfxPq8khvc2ZzE_45f1d0VUirJ05iKvNZ4tRqWAkqGHokEHnBjsd8o88G4C5S_PrOjVEvSBRUeRxoq3FDuyOvP3-CxXRevD1WH0pLWhamFKO_POCddvCuafR9wK-1ID44bqJtdRXuAtdEQqGbqACaU1KntroxvQvKAqI-jXckyqF0o5xWG7Dkakx-bCVdoIsELaodYwjRujvGhZNFnVc5ST4T-Ex7IJe4V17mo1G_6UEcoYYf4EEXdqRk4TWtcW2k7HIGE7rypwA", 
+      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6Ijk3ZWE0NWRiMWZiZTMwYTE2ODVkMTVjNThmNDY4ZjBkNTg2YmZjZjkyZmI4ZWZjYmM2N2U4OGM5ZTNkYjA2YTdiOWNlN2E2NGZlZmEzZWU5IiwiaWF0IjoxNjQ4MTY2MTAwLCJuYmYiOjE2NDgxNjYxMDAsImV4cCI6MTY0ODE2OTcwMCwic3ViIjoiIiwic2NvcGVzIjpbXX0.r1GQ7972UEymvlhP_aJ5y6n9g-9mgO0yRAaAJnjXkXzatplazFne5x6YoH5N85Wtf78Kq2-ttZeuUFifhwL_DeoRVogjFnOPYJrZ5uzdn_pN3TfP0y98LXwcHnXz9rlViHUDqDTTHDz7K8mPl1g6AliOgN8fQJerxYVh5rypmPpd99kL8EwTlDvNKqaHxeVxGEuygul8SKbsbV0U8rpIK4mgaPU8GEM2BCznW_itovjHnHHELFLIhn4R-mgqTZx0ArP8KzVPAO6DVADbCIEFPW1r5Bt9zcy2pC6GZbjlXsKuJ8mezxaGheKQLI6yy2Hkz2XIRRsiXSIkT_mCTvjgtg", 
     })
   })
     .then(function(response) {
@@ -35,8 +43,8 @@ function getAdoptionList() {
         })
       }
       else {
-        // if not successful, redirect to landing page
-        document.location.replace("./index.html");
+        // if not successful, display error message
+        console.log("error message");
       }
     }); 
 }
@@ -65,12 +73,10 @@ let displayDogs = function(dogs) {
 
     // define image url
     if (dogs.animals[i].primary_photo_cropped === null) {
-      dogImageEl.innerHTML = "<img src='./assets/images/img_placeholder.png' alt='dogs.animals[i].name' />";
+      dogImageEl.innerHTML = "<img src='./assets/images/img_placeholder.png' alt='adoptable dog' />";
     }
     else {
-      let dogImageUrl = dogs.animals[i].primary_photo_cropped.full;
-      let urlEnding = dogImageUrl.split("=")[1];
-      dogImageEl.innerHTML = "<img src='https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/" + dogId + "/1/?bust=" + urlEnding + "&width=300' alt='dogs.animals[i].name' />";
+      dogImageEl.innerHTML = "<img src='" + dogs.animals[i].primary_photo_cropped.full + "' alt='adoptable dog' />";
     }
 
     // append to link element container
@@ -100,7 +106,7 @@ let displayDogs = function(dogs) {
 
     // append dog info container to link element container
     dogEl.appendChild(dogInfoContainer);
-
+  
     dogsContainerEl.appendChild(dogEl);
   }
 }
@@ -119,5 +125,4 @@ let displayWarning = function() {
   limitWarningEl.appendChild(linkEl);
 }
 
-
-getAdoptionList();
+getParams();
