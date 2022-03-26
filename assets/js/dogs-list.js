@@ -64,19 +64,20 @@ let displayDogs = function(dogs) {
     let dogId = dogs.animals[i].id;
     // create a link element container for each dog
     let dogEl = document.createElement("a");
-    dogEl.classList = "flex max-w-full rounded overflow-hidden shadow-lg align-middle";
+    dogEl.classList = "flex max-w-4xl rounded overflow-hidden shadow-lg text-center flex-col sm:flex-row w-1/2";
     dogEl.setAttribute("href", "./page3.html?dog=" + dogId);
 
     // create div for image of dog to display
     let dogImageEl = document.createElement("div");
-    dogImageEl.classList = "flex items-center px-6 py-4";
+    dogImageEl.id = "image-container";
+    dogImageEl.classList = "self-center px-6 py-4";
 
     // define image url
     if (dogs.animals[i].primary_photo_cropped === null) {
-      dogImageEl.innerHTML = "<img src='./assets/images/img_placeholder.png' alt='adoptable dog' />";
+      dogImageEl.innerHTML = "<img id='image' src='./assets/images/img_placeholder.png' alt='adoptable dog' />";
     }
     else {
-      dogImageEl.innerHTML = "<img src='" + dogs.animals[i].primary_photo_cropped.full + "' alt='adoptable dog' />";
+      dogImageEl.innerHTML = "<img id='image' src='" + dogs.animals[i].primary_photo_cropped.full + "' alt='adoptable dog' />";
     }
 
     // append to link element container
@@ -89,7 +90,7 @@ let displayDogs = function(dogs) {
     // create a title element that displays dog's name
     let dogName = dogs.animals[i].name;
     let dogTitleEl = document.createElement("h2");
-    dogTitleEl.classList = "font-bold text-xl mb-2";
+    dogTitleEl.classList = "font-bold text-base mb-2";
     dogTitleEl.textContent = "Meet " + dogName;
 
     // create a div element that displays dog's basic information
@@ -106,7 +107,8 @@ let displayDogs = function(dogs) {
 
     // append dog info container to link element container
     dogEl.appendChild(dogInfoContainer);
-  
+
+    dogsContainerEl.classList = "flex flex-wrap max-w-full px-1 justify-center";
     dogsContainerEl.appendChild(dogEl);
   }
 }
@@ -118,6 +120,7 @@ let displayWarning = function() {
   // create a link to petfinder.com 
   let linkEl = document.createElement("a");
   linkEl.textContent = "Petfinder.com";
+  linkEl.classList = "underline text-blue-600 hover:text-blue-800";
   linkEl.setAttribute("href", "https://www.petfinder.com/search/dogs-for-adoption/us");
   linkEl.setAttribute("target", "_blank");
 
