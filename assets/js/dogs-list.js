@@ -74,10 +74,10 @@ let displayDogs = function(dogs) {
 
     // define image url
     if (dogs.animals[i].primary_photo_cropped === null) {
-      dogImageEl.innerHTML = "<img src='./assets/images/img_placeholder.png' alt='adoptable dog' />";
+      dogImageEl.innerHTML = "<img id='image' src='./assets/images/img_placeholder.png' alt='adoptable dog' />";
     }
     else {
-      dogImageEl.innerHTML = "<img src='" + dogs.animals[i].primary_photo_cropped.full + "' alt='adoptable dog' />";
+      dogImageEl.innerHTML = "<img id='image' src='" + dogs.animals[i].primary_photo_cropped.full + "' alt='adoptable dog' />";
     }
 
     // append to link element container
