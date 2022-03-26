@@ -1,19 +1,52 @@
-function getApi() {
+let submitBtn = document.getElementById("submitBtn");
 
-    var requestUrl = "https://api.petfinder.com/v2/animals";
+submitBtn.addEventListener("click", captureInputs);
+
+function captureInputs(event) {
+  event.preventDefault();
+  let dogAge = document.querySelector("#dogAge").value;
+  let dogSize = document.querySelector("#dogSize").value;
+  let dogBreed = document.querySelector("#dogBreed").value;
+  let dogGender = document.querySelector("#dogGender").value;
+  let dogLocation = document.querySelector("#dogLocation").value;
   
-    fetch(requestUrl, { 
-      method: "GET", 
-      headers: new Headers({
-        "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjMyZmY3NDE1YTJhY2I1OWRlNTc3NTM0MTBhOWNhYTI5MjM5MzNhZDMzMDRlZDc4MjE0NTYyYWRjNmZjYTBhY2RmMzAxMTU2MGYyMjNiOTQxIiwiaWF0IjoxNjQ3NDcxMjM4LCJuYmYiOjE2NDc0NzEyMzgsImV4cCI6MTY0NzQ3NDgzOCwic3ViIjoiIiwic2NvcGVzIjpbXX0.GCwp6AzGxHtMaH7mKC4uqDiv0gSWDGXcItXf-qxRn3df6zGhSjqS3Rs3zzTsw5oEaAU6hca1lTmOVqiweFFsEzKJOXH8y3bPFlCfaEZdeJ6kAAgIyleFSvanAghAQMJYhTty9ZEKWk1lMyPV6PavGSwZcBA5jC2h5L0ivhE3TS4Kaft3IBJLQaMILg8qxA1cRyuWfoW3aD_0hrujOUYnJMm9XMCGk978bEXMIt_Piqa90ojR1QB9OpgLfRiMvpTn8HK5Dsn7Yr2Z6uxxwsnBcFEWjrrvCGVlcXxQaBhvR4JJOCkzW5NXuSiWQJWf75AZE0imgqKNBNklzc-7lQjh6A", 
-      })
+//stringify object and store
+localStorage.setItem('dogAge', JSON.stringify(dogAge)); 
+localStorage.setItem('dogSize', JSON.stringify(dogSize));
+localStorage.setItem('dogBreed', JSON.stringify(dogBreed));
+localStorage.setItem('dogGender', JSON.stringify(dogGender)); 
+localStorage.setItem('dogLocation', JSON.stringify(dogLocation)); 
+
+//retrieve the object
+var retrieveddogAge = JSON.parse(localStorage.getItem('dogAge')); 
+var retrieveddogSize = JSON.parse(localStorage.getItem('dogSize')); 
+var retrieveddogBreed = JSON.parse(localStorage.getItem('dogBreed')); 
+var retrieveddogGender = JSON.parse(localStorage.getItem('dogGender')); 
+var retrieveddogLocation = JSON.parse(localStorage.getItem('dogLocation')); 
+
+
+window.location="./adoptable-dogs.html"
+}
+
+
+
+let getApi = function() {
+  fetch(requestUrl, { 
+    method: "GET", 
+    headers: new Headers({
+      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjA4ZjFjOTJjYWMwMWVmNzZkZDViNDNkODNhOTYzODVhM2E5OWU0NDdlOWI1OWZlMTM4NTIyZmQxZDc5OTgwMGU4ZmFiZGQ3ZWMzNWNjMjI1IiwiaWF0IjoxNjQ3OTkxNTcwLCJuYmYiOjE2NDc5OTE1NzAsImV4cCI6MTY0Nzk5NTE3MCwic3ViIjoiIiwic2NvcGVzIjpbXX0.u_jfpFaklBrVKfkNy9bBDKZPGQUIhyW9xmJdY5gVLeqwgu6nNcIxyzjahEmn9VZ2Fl6K5bPZ_6TTSU93qCT__2efjLgynXqzZvmnme_QvPcPauUpOwu1yxdYadCC115iLHzE0X_X8EoNhO0NLVQVYZ2MD-7QMT-FHUxkVmHcA0TEGfAnY5llLLAJrI1C4Y_wupH0cBFMleD9g_Gig1Wxn3d5jqsVtNFWbhMmxh_TrEIu1Qbso5YswnHyewRJw2TzgDSZ_7OEcIrLErC59XvPVfRGjgE3afKvBNDrMGGRObVXpikbMmggB0ZK1MvAANzbRV8ksUqkm7JYYOPhKHNUiA" })
+  })
+    .then(function(response) {
+      return response.json();
     })
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data) {
-        console.log(data);
-      });
-  }
+    .then(function(data) {
   
-  getApi();
+    });
+}
+
+//getApi();
+
+
+
+
+

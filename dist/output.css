@@ -519,6 +519,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: auto;
 }
 
+
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
 .-mb-px {
   margin-bottom: -1px;
 }
@@ -696,6 +702,26 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.underline {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 
 .px-6 {
   padding-left: 1.5rem;
