@@ -14,7 +14,7 @@ function getAdoptionInfo(dogId) {
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
-      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6ImYwZGMwZWRlY2JjMTVkOTljNzkyNmVlZTRlMjNmYjI1YTkzNzU4ZjkwNzIxYmQ5NWVmYmZmNjlkMmExNzQ1YWZjNWVkNGJiNTAxYTJiZThlIiwiaWF0IjoxNjQ4MTY1NTkyLCJuYmYiOjE2NDgxNjU1OTIsImV4cCI6MTY0ODE2OTE5Miwic3ViIjoiIiwic2NvcGVzIjpbXX0.EpdOra8qzASP4CFT-amec46RYhVVJsGevifx23-_vE1ko4TAq34yfF1mmblD83RB4nDyZsdpgR-ELgV6t5f8RcJywgwyuyDs29c-COizPehN2LeUXXV1leSrGhKFbA62Z1aQeHfSwpI24GokaYUgqpL4bCNIuKBdm0y8bb6z9MXgDP5mRzW0BrRViDUMe94gTQJWldImi3-2xjEkdwJdGWAr0eO-03zdLVp-ntJLo3GUZ_by6hFpbvC32b1IZiWxCVfb2qLOzfTWMGC0lY_bFr236KzXV1ph3fTNKAXQYNx-_k5Nx3d7pYmRODQEqR9iJGPpufS2xTFKOyiNPxvBhQ", 
+      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjA2MGFjYjAwMmExNDVlNTZkMTI1ZWY5MThkNDhhOWNkZjRlN2Q0ZDg1ZTRiZDZjMGRkMWNkMTJiMmM4NDhlNzAzMWRmZDBiNTY5NzdhOTlmIiwiaWF0IjoxNjQ4MzA3MDIyLCJuYmYiOjE2NDgzMDcwMjIsImV4cCI6MTY0ODMxMDYyMiwic3ViIjoiIiwic2NvcGVzIjpbXX0.vYgHbCwbcxCjle02j-lPlBzz9Xvd1jQJuGxKtituDHfZAQzMgtRG5OOe-bN5rVr3dmFnys9plw_4OxpxENQWpgaL84_-lddXy95KKJ9w1rQBu9Zz-LAEuNIVUTR3FlstdNMBhpyXLNu9L8xOtOvba6dycM81QjcLPK4LyDjVUOcBaRXRmO0R3zFvxFQLdwtL7ftDEjtkMgY72NiVEAOQZo2CLUOcK6CmuEFwrbO6NE18xKErqDXXuUo3ipoUALyztIUpUThcydks18TI-J7UKPdzjZgNze8wEJaNkcB1BwOAKhhq8YXbyYXEE2Lm4-S3nAWttzO6z44vGQ8JnT5aSA", 
     })
   })
     .then(function(response) {
@@ -43,6 +43,8 @@ function displayDogInfo(data) {
   document.querySelector("#email").textContent = email;
   var phone = data.animal.contact.phone;
   document.querySelector("#phone").textContent = phone;
+  var image = data.animal.photos[0].full;
+  document.querySelector("#photo").innerHTML = "<img src='" + image + "' />"
 }
 
 //getAdoptionInfo();
@@ -69,7 +71,8 @@ function getBreedInfo() {
   //getBreedInfo();
   getDogId();
 
-  //local storage
+  //LOCAL STORAGE IDEA/ not for MVP
+  
   //empty array for saved dogs
   let savedDogs =[]
   //container needed to hold dog cards
