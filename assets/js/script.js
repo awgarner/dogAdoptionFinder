@@ -8,15 +8,37 @@ function generateForm() {
   let dogBreed = document.querySelector("#dogBreed").value;
   let dogGender = document.querySelector("#dogGender").value;
   let dogLocation = document.querySelector("#dogLocation").value;
+<<<<<<< HEAD
+  
+//stringify object and store
+localStorage.setItem('dogAge', JSON.stringify(dogAge)); 
+localStorage.setItem('dogSize', JSON.stringify(dogSize));
+localStorage.setItem('dogBreed', JSON.stringify(dogBreed));
+localStorage.setItem('dogGender', JSON.stringify(dogGender)); 
+localStorage.setItem('dogLocation', JSON.stringify(dogLocation)); 
+
+
+//retrieve the object
+var retrieveddogAge = JSON.parse(localStorage.getItem('dogAge')); 
+var retrieveddogSize = JSON.parse(localStorage.getItem('dogSize')); 
+var retrieveddogBreed = JSON.parse(localStorage.getItem('dogBreed')); 
+var retrieveddogGender = JSON.parse(localStorage.getItem('dogGender')); 
+var retrieveddogLocation = JSON.parse(localStorage.getItem('dogLocation')); 
+
+
+window.location="./adoptable-dogs.html"
+
+=======
 
   console.log(dogAge,dogSize,dogBreed,dogGender,dogLocation)
+>>>>>>> 04665e9ba607c4bc77ee61786b41793b5507f9e9
 }
 
 
-function getApi() {
 
-  var requestUrl = "https://api.petfinder.com/v2/types/dog/breeds";
 
+<<<<<<< HEAD
+=======
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
@@ -31,6 +53,7 @@ function getApi() {
 }
 
 //getApi();
+>>>>>>> 04665e9ba607c4bc77ee61786b41793b5507f9e9
 
 
 
