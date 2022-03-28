@@ -11,3 +11,8 @@
   height: 100%;
   object-fit: contain;
 }
+
+.ui-dialog-titlebar {
+  background-color: #4338ca;
+  color: white;
+}

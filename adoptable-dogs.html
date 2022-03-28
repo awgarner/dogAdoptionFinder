@@ -10,6 +10,7 @@
 
     <!-- Temporary cdn to start... -->
     <!-- <link href="./dist/output.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
 
@@ -158,13 +159,32 @@
 </div>
 -->
 
+<div id="form-error" title="Error">
+  <p>
+    Something went wrong. Please make sure all the required fields are answered and try again.
+  </p>
+</div>
+
+<div id="catch-error" title="Error">
+  <p>
+    Unable to connect to PetFinder. Please try again.
+  </p>
+</div>
+
+<div id="no-dogs-error" title="No available dogs">
+  <p>
+    Sorry. There are no dogs available near you that match your criteria. Please try again.
+  </p>
+</div>
+
 <div id="dog-list-container">
 
 </div>
 <div id="limit-warning" class="text-center p-2">
 
 </div>
-
-    <script src="./assets/js/dogs-list.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> 
+  <script src="./assets/js/dogs-list.js"></script>
 </body>
 </html>
