@@ -24,6 +24,18 @@ $("#catch-error").dialog({
   }
 });
 
+// create dialog box for no matching dogs
+$("#no-dogs-error").dialog({
+  modal: true,
+  autoOpen: false,
+  buttons: {
+    Return: function() {
+      $( this ).dialog( "close" );
+      window.location = "./index.html";
+    }
+  }
+});
+
 // // temp search parameters to ensure this code works
 // let dogAge = "young,adult";
 // let dogSize = "large";
@@ -61,7 +73,7 @@ function getAdoptionList(dogAge, dogSize, dogBreed, dogGender, dogLocation) {
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
-      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjY0ZGZkZjYyYzVjZGE0N2ZmZWMwYWEwMTFmYzA5MWZjMjdjMWUwMDY2YTlhMmQyYjQyZDNiYzZmMTQzNDQyYjBiMGJiYmY2MjExNTRiNjY3IiwiaWF0IjoxNjQ4NDI4MDg3LCJuYmYiOjE2NDg0MjgwODcsImV4cCI6MTY0ODQzMTY4Nywic3ViIjoiIiwic2NvcGVzIjpbXX0.ZBboQ7msDYKL5Vq6i0tPUZSAQTeRV4gIQotPW46dBk4A7H9VseFrGGazRrt0myisfupcwCvIfoIFNATAOsB-7YwZhbmeFCWb6zfU4mXQPjSQF79m6_GUaNb0ZV6HsinO_7hVxkvQPGuiiHxW3eipa_-8-_qE8SOjP_PKWM-5d1qfxBwF4TWRkLwBvw9wGEe3VOe-hgkbjVFkqtkaDxDLX8Q5qF7ZqU1VP3CCOF8td7znThntm7GKxpUPV_dceVqnt-Ui8Sj2L9u0vFermFHTMYr061jbszLiEswcB8p7NPehesjMAFKbBE61M2x4_CxCAzpfAez0mSoME40f_OUntQ", 
+      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjAwNjRjMTVkM2E5MmJkMWJhMmI5ZjYzZDU5NGUyNmRjOGU2NGIwZDBkYjcxNzA5NjIzNTBmZDY3NzA4ZjZlNTVkOGVhNGU3ZTdmMzZlNmQwIiwiaWF0IjoxNjQ4NDcyOTY0LCJuYmYiOjE2NDg0NzI5NjQsImV4cCI6MTY0ODQ3NjU2NCwic3ViIjoiIiwic2NvcGVzIjpbXX0.FaEpJjj3ulbwqmbbaecdwg4mbeDPIhkctZtLwLGQoLjkCmD2djCCoxjKAFpFOCtcfcOdx6ZrOZXXuvjJ2ptEASs48fhS-FTOky697QWzsgLCJ0O6-ONVqYAA2feHF51es6GtBXsZd_dcCb0twxdUBl5fWzcHV1f3byuFve_48LYoTtvs2y5BWbAXA3ovYtisr7L_7oDM-uGAi8_PsqpgQt5cphB-TjyYXqDwlOeTN9_p60K9gq982unFmVewkSBAlrPPHblkiOeiz_ar2mTZlWZLPTadrctWdeXKSWS-tdeAxfLyyCUYZtMUxy7gXijwDiFarIvThgfxrPkQYYshpQ", 
     })
   })
     .then(function(response) {
@@ -90,8 +102,7 @@ function getAdoptionList(dogAge, dogSize, dogBreed, dogGender, dogLocation) {
 
 let displayDogs = function(dogs) {
   if (dogs.animals.length === 0) {
-    dogsContainerEl.textContent = "There are no available dogs near you that match your criteria. Please try again.";
-    return;
+    $("#no-dogs-error").dialog("open");
   }
   // if more than 30 animals in returned array, display first 30
   if (dogs.animals.length > 30) {
