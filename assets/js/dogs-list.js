@@ -1,6 +1,29 @@
 let dogsContainerEl = document.querySelector("#dog-list-container");
 let limitWarningEl = document.querySelector("#limit-warning");
 
+// create dialog box for incorrect parameters error
+$("#form-error").dialog({
+  modal: true,
+  autoOpen: false,
+  buttons: {
+    Ok: function() {
+      $( this ).dialog( "close" );
+    }
+  }
+});
+
+// create dialog box for response error
+$("#catch-error").dialog({
+  modal: true,
+  autoOpen: false,
+  buttons: {
+    Return: function() {
+      $( this ).dialog( "close" );
+      window.location = "./index.html";
+    }
+  }
+});
+
 // // temp search parameters to ensure this code works
 // let dogAge = "young,adult";
 // let dogSize = "large";
@@ -13,6 +36,19 @@ let getParams = function() {
   let dogBreed = JSON.parse(localStorage.getItem("dogBreed"));
   let dogGender = JSON.parse(localStorage.getItem("dogGender"));
   let dogLocation = JSON.parse(localStorage.getItem("dogLocation"));
+
+  if (dogAge === "Please Select Dog's Age") {
+    dogAge = "baby,young,adult,senior";
+  }
+
+  if (dogSize === "Please Select Dog's Size") {
+    dogSize = "small,medium,large,xlarge";
+  }
+
+  if (dogGender === "Please Select Dog's Gender") {
+    dogGender = "male,female";
+  }
+
   getAdoptionList(dogAge, dogSize, dogBreed, dogGender, dogLocation);
 }
 
@@ -25,7 +61,7 @@ function getAdoptionList(dogAge, dogSize, dogBreed, dogGender, dogLocation) {
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
-      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjYyYWIzN2YxZmJiYmJhMDY2YmExZThjZWI5MzYwODljNjM0NGU3YzY2NjdiMzAyZWI2ZDE3ZDRlYmM3MGZhMDFlODEzYmNiNDI0NTVhN2U1IiwiaWF0IjoxNjQ4MzEzMzEwLCJuYmYiOjE2NDgzMTMzMTAsImV4cCI6MTY0ODMxNjkwOSwic3ViIjoiIiwic2NvcGVzIjpbXX0.NJFks1NBBrFJxvg6aM6ks2jHNGWO_fd5646IbvD0B6N4LbtRONMjJeC8VjksdHWfeHcdLIBjjMANSUskId-b7a29Gw8rO7j1bXdWyPqLL_w9lwnDpwhsi4xcUnbbOft3K1-AzanN03kJN0qD9lrMDC9c1TDtPj_YO96zvDeTWiH69fUHev1Z-nWy6jJu5cWKkqVSrcg_CVKaH8Js6ZGMb2onQq8PXS4ylWiK3Lb-M1aSV-eoNhOxeQZZjX81LRpLUb7UvBs8RMtfKHY7El9W-yQTYl0fltZJHnz3oFPNt-5hOg6c1wwD86ZMiR8osGpU8D0Ty0bdbiEOnJGkumcQNg", 
+      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjY0ZGZkZjYyYzVjZGE0N2ZmZWMwYWEwMTFmYzA5MWZjMjdjMWUwMDY2YTlhMmQyYjQyZDNiYzZmMTQzNDQyYjBiMGJiYmY2MjExNTRiNjY3IiwiaWF0IjoxNjQ4NDI4MDg3LCJuYmYiOjE2NDg0MjgwODcsImV4cCI6MTY0ODQzMTY4Nywic3ViIjoiIiwic2NvcGVzIjpbXX0.ZBboQ7msDYKL5Vq6i0tPUZSAQTeRV4gIQotPW46dBk4A7H9VseFrGGazRrt0myisfupcwCvIfoIFNATAOsB-7YwZhbmeFCWb6zfU4mXQPjSQF79m6_GUaNb0ZV6HsinO_7hVxkvQPGuiiHxW3eipa_-8-_qE8SOjP_PKWM-5d1qfxBwF4TWRkLwBvw9wGEe3VOe-hgkbjVFkqtkaDxDLX8Q5qF7ZqU1VP3CCOF8td7znThntm7GKxpUPV_dceVqnt-Ui8Sj2L9u0vFermFHTMYr061jbszLiEswcB8p7NPehesjMAFKbBE61M2x4_CxCAzpfAez0mSoME40f_OUntQ", 
     })
   })
     .then(function(response) {
@@ -33,7 +69,7 @@ function getAdoptionList(dogAge, dogSize, dogBreed, dogGender, dogLocation) {
       if (response.ok) {
         response.json().then(function(data) {
           // send response data to function to display list of dogs
-          console.log(data);
+          // console.log(data);
           displayDogs(data);
 
           // check if api has paginated issues
@@ -44,9 +80,12 @@ function getAdoptionList(dogAge, dogSize, dogBreed, dogGender, dogLocation) {
       }
       else {
         // if not successful, display error message
-        console.log("error message");
+        $("#form-error").dialog("open");
       }
-    }); 
+    })
+    .catch(function(error) {
+      $("#catch-error").dialog("open");
+    });
 }
 
 let displayDogs = function(dogs) {
