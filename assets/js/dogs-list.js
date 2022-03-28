@@ -73,7 +73,9 @@ function getAdoptionList(dogAge, dogSize, dogBreed, dogGender, dogLocation) {
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
+
       "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjAwNjRjMTVkM2E5MmJkMWJhMmI5ZjYzZDU5NGUyNmRjOGU2NGIwZDBkYjcxNzA5NjIzNTBmZDY3NzA4ZjZlNTVkOGVhNGU3ZTdmMzZlNmQwIiwiaWF0IjoxNjQ4NDcyOTY0LCJuYmYiOjE2NDg0NzI5NjQsImV4cCI6MTY0ODQ3NjU2NCwic3ViIjoiIiwic2NvcGVzIjpbXX0.FaEpJjj3ulbwqmbbaecdwg4mbeDPIhkctZtLwLGQoLjkCmD2djCCoxjKAFpFOCtcfcOdx6ZrOZXXuvjJ2ptEASs48fhS-FTOky697QWzsgLCJ0O6-ONVqYAA2feHF51es6GtBXsZd_dcCb0twxdUBl5fWzcHV1f3byuFve_48LYoTtvs2y5BWbAXA3ovYtisr7L_7oDM-uGAi8_PsqpgQt5cphB-TjyYXqDwlOeTN9_p60K9gq982unFmVewkSBAlrPPHblkiOeiz_ar2mTZlWZLPTadrctWdeXKSWS-tdeAxfLyyCUYZtMUxy7gXijwDiFarIvThgfxrPkQYYshpQ", 
+
     })
   })
     .then(function(response) {
