@@ -1,23 +1,81 @@
 let dogsContainerEl = document.querySelector("#dog-list-container");
 let limitWarningEl = document.querySelector("#limit-warning");
 
-// temp search parameters to ensure this code works
-let dogAge = "young,adult";
-let dogSize = "large";
-let dogBreed = "shepherd";
-let dogGender = "male,female";
-let dogLocation = "43202";
+// create dialog box for incorrect parameters error
+$("#form-error").dialog({
+  modal: true,
+  autoOpen: false,
+  buttons: {
+    Ok: function() {
+      $( this ).dialog( "close" );
+    }
+  }
+});
+
+// create dialog box for response error
+$("#catch-error").dialog({
+  modal: true,
+  autoOpen: false,
+  buttons: {
+    Return: function() {
+      $( this ).dialog( "close" );
+      window.location = "./index.html";
+    }
+  }
+});
+
+// create dialog box for no matching dogs
+$("#no-dogs-error").dialog({
+  modal: true,
+  autoOpen: false,
+  buttons: {
+    Return: function() {
+      $( this ).dialog( "close" );
+      window.location = "./index.html";
+    }
+  }
+});
+
+// // temp search parameters to ensure this code works
+// let dogAge = "young,adult";
+// let dogSize = "large";
+// let dogBreed = "shepherd";
+// let dogGender = "male,female";
+// let dogLocation = "43202";
+let getParams = function() {
+  let dogAge = JSON.parse(localStorage.getItem("dogAge"));
+  let dogSize = JSON.parse(localStorage.getItem("dogSize"));
+  let dogBreed = JSON.parse(localStorage.getItem("dogBreed"));
+  let dogGender = JSON.parse(localStorage.getItem("dogGender"));
+  let dogLocation = JSON.parse(localStorage.getItem("dogLocation"));
+
+  if (dogAge === "Please Select Dog's Age") {
+    dogAge = "baby,young,adult,senior";
+  }
+
+  if (dogSize === "Please Select Dog's Size") {
+    dogSize = "small,medium,large,xlarge";
+  }
+
+  if (dogGender === "Please Select Dog's Gender") {
+    dogGender = "male,female";
+  }
+
+  getAdoptionList(dogAge, dogSize, dogBreed, dogGender, dogLocation);
+}
 
 // get list of adoptable dogs that meet user criteria submitted in form on landing page
-function getAdoptionList() {
-
-  var requestUrl = "https://api.petfinder.com/v2/animals?type=dog&status=adoptable&limit=30&age=" + dogAge + "&size=" + dogSize + "&breed=" + dogBreed + "&gender=" + dogGender + "&location=" + dogLocation;
+function getAdoptionList(dogAge, dogSize, dogBreed, dogGender, dogLocation) {
+  console.log(dogAge, dogSize, dogBreed, dogGender, dogLocation);
+  let requestUrl = "https://api.petfinder.com/v2/animals?type=dog&status=adoptable&limit=30&age=" + dogAge + "&size=" + dogSize + "&breed=" + dogBreed + "&gender=" + dogGender + "&location=" + dogLocation;
 
   // make request to url
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
-      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6ImU4ODdmYmI1YzlmMjMxZTMwZjY4OTU2OTk4NzFkOGExMzY0ZWY3OWIwYjg2MDEwMWNlNDE4MTQyZTU4YjFjMTlhODBiODVkOTM1MTM1MjY2IiwiaWF0IjoxNjQ4MzI3MTYyLCJuYmYiOjE2NDgzMjcxNjIsImV4cCI6MTY0ODMzMDc2Miwic3ViIjoiIiwic2NvcGVzIjpbXX0.HpGHNI2A_MrJ5KyeuhFbzcKUX6fRUZ1WEqoogYkFb5vIJIzBprtfObseQdLsGL76qk4_MMEM3NNaBDehH4u9BzOAR7KtfoV26k_9vORkZlqehjGIn0xZpZ6BohNCqKXROZubWoDx1oTaVzea-vsHHLmNevsZGil_fj-EERkEKBNmpWkxeP9FQVUujoq2gMnCXPDMfMfdUvN4Em07dmRFNfQJnGaaGUiaTN1oIHq8Q2MGGM4i2CUqLCU_stvJQ8UkUX4d-qYf-qPk4ZlFCX10R3ssKsr4KFV1Wjnfjxs-oPGmMQ4yHnddF2JtYAPOpX4Xx-pgLn4Vje4FzYMWCzVtbA", 
+
+      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjAwNjRjMTVkM2E5MmJkMWJhMmI5ZjYzZDU5NGUyNmRjOGU2NGIwZDBkYjcxNzA5NjIzNTBmZDY3NzA4ZjZlNTVkOGVhNGU3ZTdmMzZlNmQwIiwiaWF0IjoxNjQ4NDcyOTY0LCJuYmYiOjE2NDg0NzI5NjQsImV4cCI6MTY0ODQ3NjU2NCwic3ViIjoiIiwic2NvcGVzIjpbXX0.FaEpJjj3ulbwqmbbaecdwg4mbeDPIhkctZtLwLGQoLjkCmD2djCCoxjKAFpFOCtcfcOdx6ZrOZXXuvjJ2ptEASs48fhS-FTOky697QWzsgLCJ0O6-ONVqYAA2feHF51es6GtBXsZd_dcCb0twxdUBl5fWzcHV1f3byuFve_48LYoTtvs2y5BWbAXA3ovYtisr7L_7oDM-uGAi8_PsqpgQt5cphB-TjyYXqDwlOeTN9_p60K9gq982unFmVewkSBAlrPPHblkiOeiz_ar2mTZlWZLPTadrctWdeXKSWS-tdeAxfLyyCUYZtMUxy7gXijwDiFarIvThgfxrPkQYYshpQ", 
+
     })
   })
     .then(function(response) {
@@ -25,7 +83,7 @@ function getAdoptionList() {
       if (response.ok) {
         response.json().then(function(data) {
           // send response data to function to display list of dogs
-          console.log(data);
+          // console.log(data);
           displayDogs(data);
 
           // check if api has paginated issues
@@ -35,16 +93,18 @@ function getAdoptionList() {
         })
       }
       else {
-        // if not successful, redirect to landing page
-        document.location.replace("./index.html");
+        // if not successful, display error message
+        $("#form-error").dialog("open");
       }
-    }); 
+    })
+    .catch(function(error) {
+      $("#catch-error").dialog("open");
+    });
 }
 
 let displayDogs = function(dogs) {
   if (dogs.animals.length === 0) {
-    dogsContainerEl.textContent = "There are no available dogs near you that match your criteria. Please try again.";
-    return;
+    $("#no-dogs-error").dialog("open");
   }
   // if more than 30 animals in returned array, display first 30
   if (dogs.animals.length > 30) {
@@ -56,21 +116,20 @@ let displayDogs = function(dogs) {
     let dogId = dogs.animals[i].id;
     // create a link element container for each dog
     let dogEl = document.createElement("a");
-    dogEl.classList = "flex max-w-full rounded overflow-hidden shadow-lg align-middle";
+    dogEl.classList = "flex max-w-4xl rounded overflow-hidden shadow-lg text-center flex-col sm:flex-row w-1/2";
     dogEl.setAttribute("href", "./page3.html?dog=" + dogId);
 
     // create div for image of dog to display
     let dogImageEl = document.createElement("div");
-    dogImageEl.classList = "flex items-center px-6 py-4";
+    dogImageEl.id = "image-container";
+    dogImageEl.classList = "self-center px-6 py-4";
 
     // define image url
     if (dogs.animals[i].primary_photo_cropped === null) {
-      dogImageEl.innerHTML = "<img src='./assets/images/img_placeholder.png' alt='dogs.animals[i].name' />";
+      dogImageEl.innerHTML = "<img id='image' src='./assets/images/img_placeholder.png' alt='adoptable dog' />";
     }
     else {
-      let dogImageUrl = dogs.animals[i].primary_photo_cropped.full;
-      let urlEnding = dogImageUrl.split("=")[1];
-      dogImageEl.innerHTML = "<img src='https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/" + dogId + "/1/?bust=" + urlEnding + "&width=300' alt='dogs.animals[i].name' />";
+      dogImageEl.innerHTML = "<img id='image' src='" + dogs.animals[i].primary_photo_cropped.full + "' alt='adoptable dog' />";
     }
 
     // append to link element container
@@ -83,7 +142,7 @@ let displayDogs = function(dogs) {
     // create a title element that displays dog's name
     let dogName = dogs.animals[i].name;
     let dogTitleEl = document.createElement("h2");
-    dogTitleEl.classList = "font-bold text-xl mb-2";
+    dogTitleEl.classList = "font-bold text-base mb-2";
     dogTitleEl.textContent = "Meet " + dogName;
 
     // create a div element that displays dog's basic information
@@ -101,6 +160,7 @@ let displayDogs = function(dogs) {
     // append dog info container to link element container
     dogEl.appendChild(dogInfoContainer);
 
+    dogsContainerEl.classList = "flex flex-wrap max-w-full px-1 justify-center";
     dogsContainerEl.appendChild(dogEl);
   }
 }
@@ -112,6 +172,7 @@ let displayWarning = function() {
   // create a link to petfinder.com 
   let linkEl = document.createElement("a");
   linkEl.textContent = "Petfinder.com";
+  linkEl.classList = "underline text-blue-600 hover:text-blue-800";
   linkEl.setAttribute("href", "https://www.petfinder.com/search/dogs-for-adoption/us");
   linkEl.setAttribute("target", "_blank");
 
@@ -119,5 +180,4 @@ let displayWarning = function() {
   limitWarningEl.appendChild(linkEl);
 }
 
-
-getAdoptionList();
+getParams();

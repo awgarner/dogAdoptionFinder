@@ -3,3 +3,16 @@
 @tailwind components;
 @tailwind utilities;
 
+#image-container {
+  height: 150px;
+}
+
+#image {
+  height: 100%;
+  object-fit: contain;
+}
+
+.ui-dialog-titlebar {
+  background-color: #4338ca;
+  color: white;
+}
