@@ -44,6 +44,12 @@ Have a quality README (with unique name, description, technologies used, screens
 
 
 
+<img width="1512" alt="Screen Shot 2022-03-29 at 1 43 08 PM" src="https://user-images.githubusercontent.com/98237529/160673458-7068d560-3480-46d2-b1f0-5924b6aea681.png">
+
+<img width="1512" alt="Screen Shot 2022-03-29 at 1 43 11 PM" src="https://user-images.githubusercontent.com/98237529/160673476-c96c354c-1428-412d-ae3c-7d8c1522698d.png">
+
+<img width="1512" alt="Screen Shot 2022-03-29 at 1 43 53 PM" src="https://user-images.githubusercontent.com/98237529/160673490-3164d2bd-a857-43d0-b0e4-8376a749c14f.png">
+
 
 
 
