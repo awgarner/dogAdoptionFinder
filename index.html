@@ -1,17 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Adoption Finder</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- Tailwind links/CDN go here... -->
+    <title>Dog Adoption Finder</title>
+    <link href="./dist/output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <body>
-    
+<!-- navigation -->
+<nav class="bg-indigo-700 shadow-lg">
+  <div class="container mx-auto">
+    <div class="sm:flex justify-around">
+     
+      <a href="#" class="text-white text-3xl font-bold p-3">Dog Adoption Finder</a>
+
+      <!-- Menus  -->
+      <ul class="text-gray-400 sm:self-center text-xl border-t sm:border-none">
+        <li class="sm:inline-block">
+          <a href="#" class="p-3 hover:text-white">Twitter</a>
+        </li>
+        <li class="sm:inline-block">
+          <a href="#" class="p-3 hover:text-white">Instagram</a>
+        </li>
+        <li class="sm:inline-block">
+          <a href="#" class="p-3 hover:text-white">Facebook</a>
+        </li>
+        <li class="sm:inline-block">
+          <a href="#" class="p-3 hover:text-white">Contact Us</a>
+        </li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
 
 
+    <div class="container mx-auto mt-6 text-center text-3xl font-regular text-blue-700">
+        <h2>Find Your New Companion Today</h2>
+        <p class= "mt-2 text-center text-sm text-gray-600 max-w break-before-form space-y-4">
+          Our system helps you narrow your search to find exactly what you are looking for.
+        </p>
+    </div>
+
+<!-- Add form element -->
+    <form class= "row-4 bg-white flex flex-col justify-center py-12 px-6 lg:px-8">
+      <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle mx-auto mt-6 text-center "> 
+        <img class="mx-auto h-40 w-auto" src="./assets/images/dogimg5.jpg" alt="couple hugging a shihtzu" />
+        <label class="block flex items-center px-6 py-4">
+                <span class="text-gray-700"></span>
+                <select class="block w-full mt-1" id="dogAge">
+                  <option>Please Select Dog's Age </option>
+                  <option>Baby</option>
+                  <option>Young</option>
+                  <option>Adult</option>
+                  <option>Senior</option>
+                </select>
+              </label> 
+              
+        </div>
+           
+       
+            <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle mx-auto mt-6 text-center "> 
+              <img class="mx-auto h-40 w-auto" src="./assets/images/dogimg2.jpg" alt="two long coated brown and black dogs" />  
+              <label class="block flex items-center px-6 py-4">
+                    <span class="text-gray-700"></span>
+                    <select class="block w-full mt-1" id="dogSize">
+                      <option>Please Select Dog's Size </option>
+                      <option>Small</option>
+                      <option>Medium</option>
+                      <option>Large</option>
+                      <option>XLarge</option>
+                    </select>
+                  </label> 
+            </div>
+           
+        <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle mx-auto mt-6 text-center"> 
+          <img class="mx-auto h-40 w-auto" src="./assets/images/dogimg1.jpg" alt="photo of dogs near fence" />
+          <label class="block flex items-center px-6 py-4">
+                <span class="text-gray-700"></span>
+                <select class="block w-full mt-1" id="dogBreed">
+                  <option>Please Select Dog's Breed</option>
+                  <option>American Bulldog</option>
+                  <option>Beagle</option>
+                  <option>Border Collie</option>
+                  <option>pug</option>
+                  <option>maltese</option>
+                  <option>Dalmatian</option>
+                  <option>German Shepherd Dog</option>
+                  <option>Golden Retriever</option>
+                  <option>Alaskan Husky</option>
+                  <option>Greyhound</option>
+                  <option>Boxer</option>
+                  <option>Rottweiler</option>
+                  <option>American Pit Bull Terrier</option>
+                </select>
+            </label>
+        </div>
+           
+       
+        <div class= "flex max-w-full rounded overflow-hidden shadow-lg align-middle mx-auto mt-6 text-center">
+          <img class="mx-auto h-40 w-auto" src="./assets/images/dogimg6.jpg" alt="woman in white and black stripe top hugging a dog" />
+          <label class="block flex items-center px-6 py-4">
+                <span class="text-gray-700"></span>
+                <select class="block w-full mt-1" id="dogGender" >
+                  <option>Please Select Dog's Gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </label>  
+        </div>
+           
+        <div class= "mx-auto mt-6 text-center"> 
+          <label for="location" class="block text-lg font-regular text-gray-700">Please Enter Your location</label>
+          <div class="mt-1">
+            <input id="dogLocation" name="location" type="location" autocomplete="location" required class="" />
+          </div>
+       
+        <p class="mx-auto mt-6 text-center">
+            <span class="checkbox-wrapper max-w-full rounded overflow-hidden shadow-lg align-middle">
+              <input type="checkbox" name="age-confirm" id="checkbox" />
+              <label for="checkbox">I acknowledge that I am at least 18 years of age.</label>
+            </span>
+          </p>
+         
+        
+         
+          <div class= "mx-auto mt-6 text-center">
+            <button type="submit" id="submitBtn" class="btn py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Adopt Today</button>
+          </div>
+    </form>
+</div>
+
+ 
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

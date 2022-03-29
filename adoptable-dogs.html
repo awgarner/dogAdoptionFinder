@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoptable Dogs</title>
+    <!-- <link href="./dist/output.css" rel="stylesheet"> -->
+
+    <!-- Temporary cdn to start... -->
+    <!-- <link href="./dist/output.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+</head>
+
+<body>
+  <nav class="bg-indigo-700 shadow-lg">
+    <div class="container mx-auto">
+      <div class="flex flex-col sm:flex sm:flex-row justify-around">
+        <a href="./index.html" class="text-white text-center text-2xl font-bold p-3">Dog Adoption Finder</a>
+        <!-- Menus  -->
+        <ul class="text-gray-400 self-center sm:self-center text-base sm:border-none">
+          <li class="pb-1 sm:pb-0 sm:inline-block">
+            <a href="./index.html" class="p-3 hover:text-white">Home</a>
+          </li>
+          
+        
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero/Page info card -->
+  <div class="container mx-auto mt-6 mb-6 text-center text-3xl font-regular text-blue-700">
+    <h2 class="text-lg">Here are your search results</h2>
+    <p class= "mt-2 text-center text-sm text-gray-600 max-w break-before-form space-y-4">
+      Click on a dog for details and adoption information!
+    </p>
+</div>
+
+<!-- Back button goes here -->
+<div class="flex justify-center">
+  <a class="bg-indigo-700 text-sm hover:bg-blue-700 text-white py-1 px-2 rounded-full" href="./index.html">Go back to search</a>
+</div>
+  <!-- Static demo Card/ Dog List section - this is populated by js for the real cards -->
+<!-- 
+<div class="flex flex-wrap max-w-full px-1 justify-center">
+    <!-- dog one --
+    <div class="flex max-w-4xl rounded overflow-hidden shadow-lg text-center flex-col sm:flex-row">
+      <div class="self-center px-6 py-4">
+        <div>
+          <h3>Photo will go here</h3>
+        </div>
+      </div>
+      <div class="px-6 py-4">
+        <div class="font-bold text-base mb-2">Doggo One's Info Goes Here</div>
+          <div class="flex flex-wrap">
+            <div class="mr-2">
+              <h3>Breed:</h3>
+            </div>
+            <div>
+              <p>Breed information goes here</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap justify-center">
+            <div class="mr-2">
+              <h3>Age:</h3>
+            </div>
+            <div>
+              <p>Age information goes here</p>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- dog two --
+    <div class="flex max-w-full rounded overflow-hidden shadow-lg text-center flex-col sm:flex-row">
+      <div class="self-center px-6 py-4">
+        <div>
+          <h3>Photo will go here</h3>
+        </div>
+      </div>
+      <div class="px-6 py-4">
+        <div class="font-bold text-base mb-2">Doggo Two's Info Goes Here</div>
+          <div class="flex flex-wrap">
+            <div class="mr-2">
+              <h3>Breed:</h3>
+            </div>
+            <div>
+              <p>Breed information goes here</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap justify-center">
+            <div class="mr-2">
+              <h3>Age:</h3>
+            </div>
+            <div>
+              <p>Age information goes here</p>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- dog three --
+    <div class="flex max-w-full rounded overflow-hidden shadow-lg text-center flex-col sm:flex-row">
+      <div class="self-center px-6 py-4">
+        <div>
+          <h3>Photo will go here</h3>
+        </div>
+      </div>
+      <div class="px-6 py-4">
+        <div class="font-bold text-base mb-2">Doggo Three's Info Goes Here</div>
+          <div class="flex flex-wrap">
+            <div class="mr-2">
+              <h3>Breed:</h3>
+            </div>
+            <div>
+              <p>Breed information goes here</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap justify-center">
+            <div class="mr-2">
+              <h3>Age:</h3>
+            </div>
+            <div>
+              <p>Age information goes here</p>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- dog four --
+    <div class="flex max-w-full rounded overflow-hidden shadow-lg text-center flex-col sm:flex-row">
+      <div class="self-center px-6 py-4">
+        <div>
+          <h3>Photo will go here</h3>
+        </div>
+      </div>
+      <div class="px-6 py-4 flex flex-col">
+        <div class="font-bold text-base mb-2">Doggo Four's Info Goes Here</div>
+          <div class="flex flex-wrap">
+            <div class="mr-2">
+              <h3>Breed:</h3>
+            </div>
+            <div>
+              <p>Breed information goes here</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap justify-center">
+            <div class="mr-2">
+              <h3>Age:</h3>
+            </div>
+            <div>
+              <p>Age information goes here</p>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+-->
+
+<div id="form-error" title="Error">
+  <p>
+    Something went wrong. Please make sure all the required fields are answered and try again.
+  </p>
+</div>
+
+<div id="catch-error" title="Error">
+  <p>
+    Unable to connect to PetFinder. Please try again.
+  </p>
+</div>
+
+<div id="no-dogs-error" title="No available dogs">
+  <p>
+    Sorry. There are no dogs available near you that match your criteria. Please try again.
+  </p>
+</div>
+
+<div id="dog-list-container">
+
+</div>
+<div id="limit-warning" class="text-center p-2">
+
+</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> 
+  <script src="./assets/js/dogs-list.js"></script>
+</body>
+</html>
