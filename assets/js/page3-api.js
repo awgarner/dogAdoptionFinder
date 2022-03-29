@@ -14,7 +14,7 @@ function getAdoptionInfo(dogId) {
   fetch(requestUrl, { 
     method: "GET", 
     headers: new Headers({
-      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6ImU4ODdmYmI1YzlmMjMxZTMwZjY4OTU2OTk4NzFkOGExMzY0ZWY3OWIwYjg2MDEwMWNlNDE4MTQyZTU4YjFjMTlhODBiODVkOTM1MTM1MjY2IiwiaWF0IjoxNjQ4MzI3MTYyLCJuYmYiOjE2NDgzMjcxNjIsImV4cCI6MTY0ODMzMDc2Miwic3ViIjoiIiwic2NvcGVzIjpbXX0.HpGHNI2A_MrJ5KyeuhFbzcKUX6fRUZ1WEqoogYkFb5vIJIzBprtfObseQdLsGL76qk4_MMEM3NNaBDehH4u9BzOAR7KtfoV26k_9vORkZlqehjGIn0xZpZ6BohNCqKXROZubWoDx1oTaVzea-vsHHLmNevsZGil_fj-EERkEKBNmpWkxeP9FQVUujoq2gMnCXPDMfMfdUvN4Em07dmRFNfQJnGaaGUiaTN1oIHq8Q2MGGM4i2CUqLCU_stvJQ8UkUX4d-qYf-qPk4ZlFCX10R3ssKsr4KFV1Wjnfjxs-oPGmMQ4yHnddF2JtYAPOpX4Xx-pgLn4Vje4FzYMWCzVtbA", 
+      "Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJveE5rRDV6MWlmWklWazYwQTlUcEdEdnc5V2ZIVDlLN3lhb2p6YkFISXZkWlFtYW9rMiIsImp0aSI6IjVlYjNiZDBhZGYzY2YxYWZlNWFkYTFjZWIwN2Y1NjAxNDQzMTQzZmE0NGJhOTdlNGY2MTAxY2JkNjMyODI0MWE5NzBkNTQ3Y2UyNDRlYmIwIiwiaWF0IjoxNjQ4NTEwMzY5LCJuYmYiOjE2NDg1MTAzNjksImV4cCI6MTY0ODUxMzk2OSwic3ViIjoiIiwic2NvcGVzIjpbXX0.TehkBdzakCfDaz6ZIzKa6qtL_itP-nJYvsmbb_Lmn08X3sYG0E7D0uftb8-Omg2qWkkTSC7ThyLzQAFhxNrcPPmR9uRfEvUU6DqxtEx7NFONSSAiMbYf9VCj-tnmSTxdU9Xh88wTTj155fAOXqQu8Jb8dcVfs8DsZ6L4an8NkVYk7DTMZoyZNIirWipZ6ZkiYkQq8jWdb8SN_ky_f3_OnRAkkU1o_LaryiASguA_iH7DgBIQSHIxLHDH6EXCKZ9hNbvXDkqVvJ8m0QHUU2qlzRLSJvbnvJQ69iSX1OYI4lePOmNR7nhRHjHtVZjLTUrI2Tg2-xndU2P38v_kXbxOeg", 
     })
   })
     .then(function(response) {
@@ -28,9 +28,9 @@ function getAdoptionInfo(dogId) {
 
 function displayDogInfo(data) {
   var primaryBreed = data.animal.breeds.primary;
-  var secondaryBreed = data.animal.breeds.secondary;
+  //var secondaryBreed = data.animal.breeds.secondary;
   var Breed = document.querySelector("#Breed-info")
-  Breed.textContent = primaryBreed + ", " + secondaryBreed;
+  Breed.textContent = primaryBreed
   var dogAge = data.animal.age;
   document.querySelector("#Age-info").textContent = dogAge;
   var Address = data.animal.contact.address.address1;
@@ -45,14 +45,15 @@ function displayDogInfo(data) {
   document.querySelector("#phone").textContent = phone;
   var image = data.animal.photos[0].full;
   document.querySelector("#photo").innerHTML = "<img src='" + image + "' />"
+  getBreedInfo(primaryBreed)  
 }
 
 //getAdoptionInfo();
 
 
-function getBreedInfo() {
+function getBreedInfo(breed) {
 
-    var requestUrl = "https://api.thedogapi.com/v1/breeds/?api_key=52d48759-2a14-4bf6-8ea1-66987356dbfa";
+    var requestUrl = "https://api.thedogapi.com/v1/breeds/search?q="+ breed + "&api_key=52d48759-2a14-4bf6-8ea1-66987356dbfa";
   
     fetch(requestUrl)
 
@@ -65,6 +66,14 @@ function getBreedInfo() {
         let breedName = data[0].name
         var infoContainerEl = document.querySelector(".breed")
         infoContainerEl.textContent = breedName
+        let temperament = data[0].temperament
+        var temperamentContainer = document.querySelector(".temperament")
+        console.log(temperament)
+        temperamentContainer.textContent = temperament
+        let lifeSpan = data[0].life_span
+        var lifeSpanContainer = document.querySelector(".life_span")
+        lifeSpanContainer.textContent = lifeSpan
+
       });
   }
   
