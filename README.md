@@ -6,6 +6,11 @@ User Story
 
 As a person seeking to adopt a dog, I want the option to find a dog by breed, gender, age, size, and location. So that I can pick the best option that fits what I am seeking.
 
+Technologies used
+
+Tailwind CSS
+JQuery and JQuery UI
+HTML, CSS, and JavaScript
 
 
 Acceptance Criteria 
