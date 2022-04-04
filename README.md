@@ -4,11 +4,22 @@ https://awgarner.github.io/dogAdoptionFinder/
 
 User Story 
 
+
+
 As a person seeking to adopt a dog, I want the option to find a dog by breed, gender, age, size, and location. So that I can pick the best option that fits what I am seeking.
 
 
+Technologies used
+
+
+
+Tailwind CSS
+JQuery and JQuery UI
+HTML, CSS, and JavaScript
+
 
 Acceptance Criteria 
+
 
 
 Use a CSS framework other than Bootstrap.
@@ -43,11 +54,12 @@ Have a quality README (with unique name, description, technologies used, screens
 <img width="1512" alt="Screen Shot 2022-03-21 at 5 17 55 PM" src="https://user-images.githubusercontent.com/98237529/160510699-1543e3d4-b648-4266-9d6b-548110d2b98a.png">
 
 
-<img width="1512" alt="Screen Shot 2022-03-28 at 8 51 42 PM" src="https://user-images.githubusercontent.com/98237529/160511184-f2d85a24-f35a-405d-9250-4681603b0353.png">
 
-<img width="1512" alt="Screen Shot 2022-03-28 at 8 51 49 PM" src="https://user-images.githubusercontent.com/98237529/160511193-be104b7f-3bab-4087-b067-42a68b15e0e6.png">
+<img width="1512" alt="Screen Shot 2022-03-29 at 1 43 08 PM" src="https://user-images.githubusercontent.com/98237529/160673458-7068d560-3480-46d2-b1f0-5924b6aea681.png">
 
-<img width="1512" alt="Screen Shot 2022-03-28 at 8 52 17 PM" src="https://user-images.githubusercontent.com/98237529/160511204-5992de22-55b5-4356-9541-ca3708a192b1.png">
+<img width="1512" alt="Screen Shot 2022-03-29 at 1 43 11 PM" src="https://user-images.githubusercontent.com/98237529/160673476-c96c354c-1428-412d-ae3c-7d8c1522698d.png">
+
+<img width="1512" alt="Screen Shot 2022-03-29 at 1 43 53 PM" src="https://user-images.githubusercontent.com/98237529/160673490-3164d2bd-a857-43d0-b0e4-8376a749c14f.png">
 
 
 
